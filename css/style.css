@@ -43,6 +43,7 @@ a{
     text-transform: uppercase;
     text-align: center;
     padding: 10px;
+    font-weight: 800;
 }
 .search-form fieldset{
     border: none;
@@ -77,6 +78,12 @@ a{
     font-size: 0.9em;
     text-transform: uppercase;
     font-weight: 600;
+    cursor: pointer;
+}
+.app-button:focus,
+.app-button:hover{
+    background: #343434;
+    transition: .3s;
 }
 .app-info{
     margin: 30px 30px;
