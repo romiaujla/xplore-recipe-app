@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Raman Aujla">
@@ -11,29 +12,35 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
     <main class="container" role="main container">
         <header class="header-section">
-            <h1 class="logo" role="logo">
-                xplore recipes
-            </h1>
-            <form action="" class="search-form" role="search-form">
-                <fieldset>
-                    <legend>Search Recipe:</legend>
-                    <label for="search-recipe">
-                        <div class="search-box">
-                            <input type="text" role="search textbox" name="search-recipe" id="search-recipe" class="search-textbox">
-                            <button type="submit" class="submit-button app-button" role="submit button">Submit</button>
-                        </div>
-                    </label>
-                </fieldset>
-            </form>
-            <div class="app-info">
-                    1.7+ million nutritionally analyzed recipes
+            <div class="wrapper">
+                <h1 class="logo" role="logo">
+                    xplore recipes
+                </h1>
+                <form action="" class="search-form" role="search-form">
+                    <fieldset>
+                        <legend></legend>
+                        <label for="search-recipe">
+                            <div class="search-box">
+                                <input type="text" role="search textbox" name="search-recipe" id="search-recipe"
+                                    class="search-textbox" placeholder="Search Recipe" required>
+                                <button type="submit" class="submit-button app-button"
+                                    role="submit button">Submit</button>
+                            </div>
+                        </label>
+                    </fieldset>
+                </form>
+                <div class="app-info">
+                    Browse through 1.7+ million nutritionally analyzed recipes
                     Detailed macro and micronutrient data
                     Filter by calories, diets and allergens
+                </div>
             </div>
         </header>
     </main>
 </body>
+
 </html>

@@ -17,6 +17,14 @@ input, div, header{
     margin: 0;
 }
 
+body{
+    background: lightgray;
+}
+
+html, body{
+    height: 100%;
+}
+
 ul{
     list-style: none;   
 }
@@ -30,4 +38,43 @@ a{
     text-transform: uppercase;
     text-align: center;
     padding: 10px;
+}
+.search-form fieldset{
+    border: none;
+}
+.search-form fieldset legend{
+    padding: 10px;
+}
+.search-box{
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 25px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.search-textbox{
+    border: none;
+    border-bottom: 2px solid white;
+    padding: 5px;
+    background: white;
+    font-size: 1.1em;
+    margin: 5px 5px 5px 15px;
+    width: 90%;
+}
+.app-button{
+    border: none;
+    background: black;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.app-info{
+    margin: 30px 30px;
+    line-height: 1.6em;
+    text-align: center;
 }
