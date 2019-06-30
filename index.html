@@ -17,27 +17,69 @@
     <main class="container landing-page" role="main container">
         <header class="header-section landing-page">
             <div class="wrapper">
-                <h1 class="logo" role="logo">
+                <h1 class="logo" role="app logo">
                     xplore recipes
                 </h1>
                 <form action="" class="search-form" role="search-form">
                     <fieldset>
-                        <legend></legend>
+                        <legend role="search recipe form"></legend>
                         <label for="search-recipe">
                             <div class="search-box">
-                                <input type="text" role="search textbox" name="search-recipe" id="search-recipe"
-                                    class="search-textbox" placeholder="Search Recipe" required>
-                                <button type="submit" class="submit-button app-button"
-                                    role="submit button">Submit</button>
+                                <input type="text" role="search textbox" name="search-recipe" id="search-recipe" class="search-textbox" placeholder="Search Recipe" required>
                             </div>
                         </label>
+                        <div class="filter-box">
+                            <button type="button" class="filter-button" role="filter button">Filter<span class="down-arrow"> &#8681;</span></button>
+                            <div class="filter-drop-down-menu">
+                                <div class="calorie-filter" role="calorie filter section">
+                                    <h3 class="filter-label">
+                                        Calories
+                                    </h3>
+                                    <label for="min-calorie" class="min-calorie">
+                                        <input type="number" name="min-calorie" id="min-calorie" class="min-calorie-textbox" placeholder="min" min="0" role="minimum calorie textbox">
+                                        <span class="min-calorie-span">Min</span>
+                                    </label>
+                                    <label for="max-calorie" class="max-calorie">
+                                        <input type="number" name="max-calorie" id="max-calorie" class="max-calorie-textbox" placeholder="max" min="0" role="maximum calorie textbox">
+                                        <span class="max-calorie-span">Max</span>
+                                    </label>
+                                </div>
+                                <div class="diet-allergen-wrapper">
+                                    <div class="diet-filter" role="diet filter section">
+                                        <h3 class="diet-filter-header">
+                                            Diet:
+                                        </h3>
+                                        <label for="vegetarian"><input type="checkbox" name="vegetarian" id="vegetarian" role="vegetarian checkbox">Vegetarian</label>
+                                        <label for="high-fiber"><input type="checkbox" name="high-fiber" id="high-fiber" role="high-fiber checkbox">High-Fiber</label>
+                                        <label for="high-protein"><input type="checkbox" name="high-protein" id="high-protein" role="high-protein checkbox">High-Protein</label>
+                                        <label for="low-carbs"><input type="checkbox" name="low-carbs" id="low-carbs" role="low-carbs checkbox">Low-Carbs</label>
+                                        <label for="low-fat"><input type="checkbox" name="low-fat" id="low-fat" role="low-fat checkbox">Low-Fat</label>
+                                        <label for="low-sodium"><input type="checkbox" name="low-sodium" id="low-sodium" role="low-sodium checkbox">Low-Sodium</label>
+                                    </div>
+                                    <div class="allergies-filter" role="allergies filter section">
+                                        <h3 class="allergies-filter-header">
+                                            Allergies:
+                                        </h3>
+                                        <label for="gluten"><input type="checkbox" name="gluten" id="gluten" role="gluten checkbox">Gluten</label>
+                                        <label for="dairy"><input type="checkbox" name="dairy" id="dairy" role="dairy checkbox">Dairy</label>
+                                        <label for="peanuts"><input type="checkbox" name="peanuts" id="peanuts" role="peanuts checkbox">Peanuts</label>
+                                        <label for="wheat"><input type="checkbox" name="wheat" id="wheat" role="wheat checkbox">Wheat</label>
+                                    </div>
+                                </div>
+                                <div class="filter-buttons-div">
+                                    <button type="reset" class="reset-button app-button" role="reset filters button">Reset</button>
+                                    <button type="button" class="done-button app-button" role="set filters button">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-info" role="app description">
+                            Browse through 1.7+ million nutritionally analyzed recipes, detailed macro and micronutrient data. Filter by calories, diets and allergens.
+                        </div>
+                        <div class="submit-button-div">
+                            <button type="submit" class="submit-button app-button" role="find button">Find Recipes</button>
+                        </div>
                     </fieldset>
                 </form>
-                <div class="app-info">
-                    Browse through 1.7+ million nutritionally analyzed recipes
-                    Detailed macro and micronutrient data
-                    Filter by calories, diets and allergens
-                </div>
             </div>
         </header>
     </main>
