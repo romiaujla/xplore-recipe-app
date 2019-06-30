@@ -60,6 +60,11 @@ a{
     flex-direction: row;
     margin: 10px;
 }
+.search-box:focus,
+.search-box:hover{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border-color: rgba(223,225,229,0);
+}
 .search-textbox{
     border: none;
     border-bottom: 2px solid white;
@@ -68,6 +73,7 @@ a{
     font-size: 1.1em;
     margin: 5px 5px 5px 15px;
     width: 90%;
+    outline: none;
 }
 .app-button{
     border: none;
