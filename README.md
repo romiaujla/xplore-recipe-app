@@ -1,5 +1,6 @@
 # xplore-recipe-app
 Xplore Recipe App
+- Allows a user to browse through recipes using the Edamam API, which has a database of 1.7+ million nutritionally analyzed recipes Detailed macro and micronutrient data Filter by calories, diets and allergens. Users can have their own grocery list while browsing thru the recipes. User can add the ingredients required to make a recipe to thier grocery list. 
 
 LIVE LINK:
 - https://romiaujla.github.io/xplore-recipe-app/.
