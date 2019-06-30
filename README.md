@@ -2,7 +2,7 @@
 Xplore Recipe App
 
 USER STORIES:
--Search for recipes with recipe names
+- Search for recipes with recipe names
 - Search for recipes using ingredients
 - Restrict search from showing receipes with certain ingredients
 - Search using calories
