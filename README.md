@@ -19,7 +19,7 @@ USER STORIES:
 - User can shae the receipt to social media
 - User can email the recipe to someone
 
-DISABLED USER:
+DISABLED USER STORY:
 - As a disabled user I would like to navigate thru the whole app, using either keyboard or mouse
 - As a disabled user I would like the website to aria compatible so screen reader can pick up what the user is interacting with and read it back to the user.  
 
