@@ -5,7 +5,7 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.wrapper{
+.container{
     max-width: 480px;
     margin: auto;
 }
@@ -23,4 +23,11 @@ ul{
 
 a{
     text-decoration: none;
+}
+
+/* Landing Page */
+.logo{
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
 }
