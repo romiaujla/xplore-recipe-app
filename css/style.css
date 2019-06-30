@@ -76,6 +76,15 @@ a{
     border-radius: 25px;
     border: none;
     margin-bottom: 5px;
+    cursor: pointer;
+}
+.search-textbox:focus,
+.search-textbox:hover{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border-color: rgba(223,225,229,0);
+}
+.search-textbox:focus{
+    cursor: text;
 }
 .filter-button{
     position: relative;
@@ -90,7 +99,10 @@ a{
 }
 .clicked{
     border: 1px solid black;
-    border-bottom-color: lightgray;
+    border-bottom-color: silver;
+    background: silver;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .filter-drop-down-menu{
     /* display: none; */
@@ -99,7 +111,10 @@ a{
     padding: 20px 15px;
     /* position: absolute; */
     border: 1px solid black;
+    background: silver;
     z-index: 1;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
 }
 .app-info{
     padding: 40px 0px;
