@@ -25,7 +25,7 @@ DISABLED USER STORY:
 - As a disabled user I would like the website to aria compatible so screen reader can pick up what the user is interacting with and read it back to the user.  
 
 TECH USED:
-- Adobe XD to sketch logo
+- Logo sketching - Adobe XD
 - Frontend: HTML5, CSS3, Javascript, jQuery
 - Backend: Edamam API
 
