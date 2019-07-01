@@ -1,3 +1,7 @@
+function displayResults(responseJson){
+    
+}
+
 function styleForRecipePage(){
 
     $('.app-info').hide();
@@ -130,14 +134,15 @@ function watchForm(){
 
             let fetchURL = getFetchURL();
 
-            fetch(fetchURL)
-                .then(response => response.json())
-                .then(responseJson => {
-                    console.log(responseJson)
-                })
-                .catch(err => {
-                    alert(`We have encountered an error: ${err}`);
-                });
+            // fetch(fetchURL)
+            //     .then(response => response.json())
+            //     .then(responseJson => {
+            //         console.log(responseJson)
+                        displayResults(responseJson);
+            //     })
+            //     .catch(err => {
+            //         alert(`We have encountered an error: ${err}`);
+            //     });
 
         }else{
             filterMenuShowToggle();
