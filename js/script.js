@@ -94,17 +94,25 @@ function watchForm(){
 function checkMinMaxCal(){
     let minCal = $('.min-calorie-textbox').val();
     let maxCal = $('.max-calorie-textbox').val();
-    if(maxCal !== ""){
-        if(minCal > maxCal){
+    if(maxCal > 0){
+        if(parseInt(minCal,10) > parseInt(maxCal,10)){
+            console.log(`${minCal} > ${maxCal}`);
+            console.log(typeof minCal);
             $('.cal-error').slideDown(100);
         }else{
+            console.log(`${minCal} < ${maxCal}`);
             $('.cal-error').slideUp(100);
         }
+    }
+    if(maxCal === "" || minCal === ""){
+        $('.cal-error').slideUp(100);
     }
 }
 
 function handleCalorieError(){
     
+    // checks for error when max and min cal box leave focus
+
     $('.max-calorie-textbox').on('focusout', function(e){
         checkMinMaxCal();
     })
@@ -136,6 +144,7 @@ function handleFilterMenuClicks(){
         // only reset the filter drop down menu and not the serch box text. 
         $('.filter-drop-down-menu input[type="number"]').val("");
         $('.filter-drop-down-menu input[type="checkbox"]').prop('checked', false);
+        $('.cal-error').hide();
     });
 
     $('.done-button').on('click', function(e){
