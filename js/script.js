@@ -1,5 +1,12 @@
 function watchForm(){
     // Handles the search query submission by the user (Find Button Click)
+    $('form').on('submit', function(e){
+        e.preventDefault();
+
+        const appID = "9f0ec4b3";
+        const apiKey = "ebacde04674e74870f8fb6567ee11ce7";
+
+    })
 }
 
 function filterMenuShowToggle(){
