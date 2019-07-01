@@ -1,3 +1,13 @@
+function styleForRecipePage(){
+
+    $('.app-info').hide();
+    $('.header-section').removeClass('landing-page');
+    $('.header-section').addClass('recipe-page');
+    $('.header-section')
+        .css('display', 'block');
+
+}
+
 function getHealth(){
     // returns the parameter value for allergies
     let healthParam = [];
@@ -5,39 +15,37 @@ function getHealth(){
     if($('#vegetarian:checked').val() === "on"){
         healthParam.push("vegetarian");
     }
-    if($('#gluten:checked').val() === "on"){
-        healthParam.push("gluten");
+    if($('#vegan:checked').val() === "on"){
+        healthParam.push("vegan");
     }
-    if($('#dairy:checked').val() === "on"){
-        healthParam.push("dairy");
+    if($('#sugar-conscious:checked').val() === "on"){
+        healthParam.push("sugar-conscious");
     }
-    if($('#peanuts:checked').val() === "on"){
-        healthParam.push("peanuts");
+    if($('#peanut-free:checked').val() === "on"){
+        healthParam.push("peanut-free");
     }
-    if($('#wheat:checked').val() === "on"){
-        healthParam.push("wheat");
+    if($('#tree-nut-free:checked').val() === "on"){
+        healthParam.push("tree-nut-free");
     }
 
     return healthParam;
 }
+
 function getDiet(){
     // returns the parameter value for diet
     let dietParam = [];
 
-    if($('#high-fiber:checked').val() === "on"){
-        dietParam.push("high-fiber")
-    }
     if($('#high-protein:checked').val() === "on"){
         dietParam.push("high-protien");
     }
     if($('#low-carbs:checked').val() === "on"){
-        dietParam.push("low-carbs");
+        dietParam.push("low-carb");
     }
     if($('#low-fat:checked').val() === "on"){
         dietParam.push("low-fat");
     }
-    if($('#low-sodium:checked').val() === "on"){
-        dietParam.push("low-sodium");
+    if($('#balanced:checked').val() === "on"){
+        dietParam.push("balanced");
     }
 
     return dietParam;
@@ -62,8 +70,11 @@ function getCalories(){
 }
 
 function getParameters(){
+
     // return an object with all the parameters
     const params = {
+        appid: "9f0ec4b3",
+        apiKey: "ebacde04674e74870f8fb6567ee11ce7",
         q: $('.search-textbox').val(),
         cal: getCalories(),
         diet: getDiet(),
@@ -76,18 +87,58 @@ function getParameters(){
 function getFetchURL(){
     // return the string for the fetch url
     let params = getParameters();
-    console.log(params);
+    let url = `https://api.edamam.com/search?q=${params.q}&app_id=${params.appid}&app_key=${params.apiKey}`;
+    // https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free
+
+    if(params.cal !== ""){
+        url += `&cal=${params.cal}`;
+    }
+
+    let diet = params.diet;
+    if(diet.length != 0){
+        for(let i = 0; i < diet.length; i++){
+            url += `&deit=${diet[i]}`;
+        }
+    }
+
+    let health = params.health;
+    if(health.length != 0){
+        for(let i = 0; i < health.length; i++){
+            url += `&health=${health[i]}`;
+        }
+    }
+
+    return url;
 }
 
 function watchForm(){
+
     // Handles the search query submission by the user (Find Button Click)
     $('form').on('submit', function(e){
         e.preventDefault();
 
-        const appID = "9f0ec4b3";
-        const apiKey = "ebacde04674e74870f8fb6567ee11ce7";
         if($('.cal-error').css('display') === "none"){
+            if($('.filter-drop-down-menu').css('display') !== "none"){
+                $('.filter-drop-down-menu').slideUp(150);
+                $('.filter-button').toggleClass('clicked');
+            }
+
+            // call only if the header-section has the landing-page class in it
+            if($('.header-section').hasClass('landing-page')){
+                styleForRecipePage();
+            }   
+
             let fetchURL = getFetchURL();
+
+            fetch(fetchURL)
+                .then(response => response.json())
+                .then(responseJson => {
+                    console.log(responseJson)
+                })
+                .catch(err => {
+                    alert(`We have encountered an error: ${err}`);
+                });
+
         }else{
             filterMenuShowToggle();
             $('.min-calorie-textbox').focus();
@@ -101,8 +152,6 @@ function checkMinMaxCal(){
     let maxCal = $('.max-calorie-textbox').val();
     if(maxCal > 0){
         if(parseInt(minCal,10) > parseInt(maxCal,10)){
-            console.log(`${minCal} > ${maxCal}`);
-            console.log(typeof minCal);
             $('.cal-error').slideDown(100);
         }else{
             console.log(`${minCal} < ${maxCal}`);
@@ -134,22 +183,23 @@ function filterMenuShowToggle(){
     if($('.filter-drop-down-menu').css('display') === 'none'){
         $('.filter-drop-down-menu').slideDown(150);
         handleCalorieError();
-
+        $('.min-calorie-textbox').focus();
     }else{
         $('.filter-drop-down-menu').slideUp(150);
     }
 }
 
 function handleFilterMenuClicks(){
-    let searchTextBoxValue = "";
+
     // Handles the Reset Button and Done Button Click
     $('.reset-button').on('click', function(e){
         e.preventDefault();
-
         // only reset the filter drop down menu and not the serch box text. 
         $('.filter-drop-down-menu input[type="number"]').val("");
         $('.filter-drop-down-menu input[type="checkbox"]').prop('checked', false);
         $('.cal-error').hide();
+        $('.min-calorie-textbox').focus();
+
     });
 
     $('.done-button').on('click', function(e){
