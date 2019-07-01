@@ -1,13 +1,45 @@
-function getAllergies(){
+function getHealth(){
     // returns the parameter value for allergies
-    let allergiesParam = "";
-    
-    return allergiesParam;
+    let healthParam = [];
+
+    if($('#vegetarian:checked').val() === "on"){
+        healthParam.push("vegetarian");
+    }
+    if($('#gluten:checked').val() === "on"){
+        healthParam.push("gluten");
+    }
+    if($('#dairy:checked').val() === "on"){
+        healthParam.push("dairy");
+    }
+    if($('#peanuts:checked').val() === "on"){
+        healthParam.push("peanuts");
+    }
+    if($('#wheat:checked').val() === "on"){
+        healthParam.push("wheat");
+    }
+
+    return healthParam;
 }
 function getDiet(){
     // returns the parameter value for diet
-    let dietParam = "";
-    console.log($('#vegetarian').checked());
+    let dietParam = [];
+
+    if($('#high-fiber:checked').val() === "on"){
+        dietParam.push("high-fiber")
+    }
+    if($('#high-protein:checked').val() === "on"){
+        dietParam.push("high-protien");
+    }
+    if($('#low-carbs:checked').val() === "on"){
+        dietParam.push("low-carbs");
+    }
+    if($('#low-fat:checked').val() === "on"){
+        dietParam.push("low-fat");
+    }
+    if($('#low-sodium:checked').val() === "on"){
+        dietParam.push("low-sodium");
+    }
+
     return dietParam;
 }
 
@@ -17,6 +49,10 @@ function getCalories(){
 
     let minCal = $('.min-calorie-textbox').val();
     let maxCal = $('.max-calorie-textbox').val();
+
+    if(minCal > maxCal){
+        
+    }
 
     if(minCal === "" && maxCal === ""){
         return "";
@@ -31,21 +67,20 @@ function getCalories(){
 
 function getParameters(){
     // return an object with all the parameters
-    const params = [
-        {
-            q : $('.search-textbox').val(),
-            cal : getCalories(),
-            diet: getDiet(),
-            allergies: getAllergies()
-        }
-    ];
+    const params = {
+        q: $('.search-textbox').val(),
+        cal: getCalories(),
+        diet: getDiet(),
+        health: getHealth()
+    };
 
-    console.log(params);
+    return params;
 }
 
 function getFetchURL(){
     // return the string for the fetch url
     let params = getParameters();
+    console.log(params);
 }
 
 function watchForm(){
