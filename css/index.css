@@ -224,3 +224,12 @@ a{
 .filter-drop-down-menu{
     display: none;
 }
+
+.cal-error{
+    display: none;
+    color: maroon;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    padding-top: 10px;
+}
