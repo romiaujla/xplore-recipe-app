@@ -86,7 +86,12 @@ function watchForm(){
 
         const appID = "9f0ec4b3";
         const apiKey = "ebacde04674e74870f8fb6567ee11ce7";
-        let fetchURL = getFetchURL();
+        if($('.cal-error').css('display') === "none"){
+            let fetchURL = getFetchURL();
+        }else{
+            filterMenuShowToggle();
+            $('.min-calorie-textbox').focus();
+        }
 
     });
 }
