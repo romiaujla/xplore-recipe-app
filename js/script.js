@@ -1,7 +1,51 @@
-function displayresults(responseJson){
+function getAllergies(){
+    // returns the parameter value for allergies
+    let allergiesParam = "";
     
+    return allergiesParam;
+}
+function getDiet(){
+    // returns the parameter value for diet
+    let dietParam = "";
+    console.log($('#vegetarian').checked());
+    return dietParam;
+}
 
+function getCalories(){
 
+    // returns the parameter value for calories
+
+    let minCal = $('.min-calorie-textbox').val();
+    let maxCal = $('.max-calorie-textbox').val();
+
+    if(minCal === "" && maxCal === ""){
+        return "";
+    }else if(minCal !== "" && maxCal === ""){
+        return `${minCal}+`;
+    }else if(minCal === "" && maxCal !== ""){
+        return maxCal;
+    }else{
+        return `${minCal}-${maxCal}`;
+    }
+}
+
+function getParameters(){
+    // return an object with all the parameters
+    const params = [
+        {
+            q : $('.search-textbox').val(),
+            cal : getCalories(),
+            diet: getDiet(),
+            allergies: getAllergies()
+        }
+    ];
+
+    console.log(params);
+}
+
+function getFetchURL(){
+    // return the string for the fetch url
+    let params = getParameters();
 }
 
 function watchForm(){
@@ -11,10 +55,9 @@ function watchForm(){
 
         const appID = "9f0ec4b3";
         const apiKey = "ebacde04674e74870f8fb6567ee11ce7";
+        let fetchURL = getFetchURL();
 
-        displayresults(respJson);
-
-    })
+    });
 }
 
 function filterMenuShowToggle(){

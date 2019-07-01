@@ -1,9 +1,167 @@
 /* Global Styles */
+/* Global Styles */
 *{
     box-sizing: border-box;
     font-family: sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+}
+
+.container{
+    max-width: 480px;
+    margin: auto;
+}
+
+body, p, h1, h2, h3, h4, h5, h6,
+ul, li, a, button, form, fieldset, legend,
+input, div, header{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: lightgray;
+}
+
+html, body{
+    height: 100%;
+}
+
+ul{
+    list-style: none;   
+}
+
+a{
+    text-decoration: none;
+}
+
+.app-button{
+    border: none;
+    background: black;
+    color: white;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filter-drop-down-menu{
+    margin-right: 10px;
+    padding: 20px 15px;
+    position: absolute;
+    width: 95%;
+    max-width: 450px;
+    border: 1px solid black;
+    background: silver;
+    z-index: 1;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+}
+.app-info{
+    padding: 40px 0px;
+}
+.submit-button-div{
+    text-align: center;
+}
+
+
+/* filter menu drop down styling */
+.calorie-filter{
+    text-align: center;
+    align-self: center;    
+    padding: 10px 10px;
+}
+.calorie-filter-header{
+    font-size: 1em;
+    padding-top: 7px;
+}
+.calorie-filter label{
+    display: flex;
+    flex-direction: column;
+}
+.calorie-filter label span{
+    display: inline-block;
+    text-align: right;
+    font-size: .7em;
+    text-transform: uppercase;
+    padding-top: 3px;
+    padding-right: 15px;
+}
+.calorie-label-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.calorie-filter label input[type="number"]{
+    padding: 5px;
+    text-align: right;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+}
+
+.diet-filter{
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+}
+.diet-filter-header{
+    font-size: 1em;
+    padding: 7px 0px;
+}
+.diet-filter label{
+    margin-top: 5px;
+    font-size: .8em;
+}
+.allergies-filter label{
+    padding: 10px 20px 0px 20px;
+    font-size: .8em;
+}
+.diet-filter label input,
+.allergies-filter label input{
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+.allergies-label-wrapper{
+    padding: 5px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.allergies-filter{
+    margin-top: 20px;
+}
+.allergies-filter-header{
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+}
+.calorie-diet-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+.calorie-wrapper{
+    width: 40%;
+    display:flex;
+    justify-content: center;
+}
+.diet-wrapper{
+    width: 60%;
+    display:flex;
+    justify-content: center;
+}
+.filter-buttons-div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 /* Landing Page */
