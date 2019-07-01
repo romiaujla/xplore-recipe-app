@@ -312,3 +312,25 @@ a{
     padding-top: 50%;
     height: 100%;
 }
+.fetching-info{
+    min-height: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.fetching-info img{
+    width: max-content;
+    align-self: center;
+    margin: 50px 0px;
+}
+
+.no-recipe-found{
+    font-size: 1.1em;
+    line-height: 1.5em;
+    padding: 30px;
+    margin-top: 50px;
+}
+.q{
+    font-weight: 600;
+}

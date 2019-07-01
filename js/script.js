@@ -1,35 +1,49 @@
 function displayResults(responseJson){
+    
+    $('.search-result-wrapper').html("");
 
-    for(let i = 0;i < responseJson.hits.length; i++){
-        let recipe = responseJson.hits[i].recipe;
+    let recipesFound = responseJson.hits.length;
 
-        $('.search-result-wrapper').append(`
-
-        <button type="button" class="recipe-button" value="${i}">
-            <div class="recipe">
-                <div class="recipe-info-container">
-                    <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
-                    <h2 class="recipe-name">
-                        ${recipe.label}
-                    </h2>   
-                    <div class="recipe-info-wrapper">
-                        <div class="recipe-cal">
-                            Calories : ${Math.floor(recipe.calories)}
-                        </div>
-                        <div class="servings">
-                            Servings : ${recipe.yield}
+    if(recipesFound === 0){
+        $('.search-result-wrapper').html(`
+            <div class="no-recipe-found">
+                Sorry we were not able to find anything related to <span class="q">${responseJson.q}</span>. Try another search.
+            </div>
+        `);
+        $('.search-textbox').focus();
+        $('.search-textbox').val("");
+    }else{
+        for(let i = 0;i < responseJson.hits.length; i++){
+            let recipe = responseJson.hits[i].recipe;
+    
+            $('.search-result-wrapper').append(`
+            
+            <button type="button" class="recipe-button" value="${i}">
+                <div class="recipe">
+                    <div class="recipe-info-container">
+                        <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
+                        <h2 class="recipe-name">
+                            ${recipe.label}
+                        </h2>   
+                        <div class="recipe-info-wrapper">
+                            <div class="recipe-cal">
+                                Calories : ${Math.floor(recipe.calories)}
+                            </div>
+                            <div class="servings">
+                                Servings : ${recipe.yield}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="view-recipe-wrapper">
-                <span class="view-recipe">
-                    View Recipe
-                </span>
-            </div>
-        </button>
-
-        `);
+                <div class="view-recipe-wrapper">
+                    <span class="view-recipe">
+                        View Details
+                    </span>
+                </div>
+            </button>
+    
+            `);
+        }
     }
 }
 function styleForRecipePage(){
@@ -143,6 +157,14 @@ function getFetchURL(){
     return url;
 }
 
+function displayFetchingElement(){
+    $('.search-result-wrapper').html(`
+        <div class=fetching-info>
+            Fetching Recipes
+        </div>
+    `);
+}
+
 function watchForm(){
 
     // Handles the search query submission by the user (Find Button Click)
@@ -150,6 +172,9 @@ function watchForm(){
         e.preventDefault();
 
         if($('.cal-error').css('display') === "none"){
+            
+            displayFetchingElement();
+
             if($('.filter-drop-down-menu').css('display') !== "none"){
                 $('.filter-drop-down-menu').slideUp(150);
                 $('.filter-button').toggleClass('clicked');
@@ -162,15 +187,15 @@ function watchForm(){
 
             let fetchURL = getFetchURL();
 
-            // fetch(fetchURL)
-            //     .then(response => response.json())
-            //     .then(responseJson => {
-            //         console.log(responseJson)
-                        displayResults(respJson);
-            //     })
-            //     .catch(err => {
-            //         alert(`We have encountered an error: ${err}`);
-            //     });
+            fetch(fetchURL)
+                .then(response => response.json())
+                .then(responseJson => {
+                    console.log(responseJson);
+                    displayResults(responseJson);
+                })
+                .catch(err => {
+                    alert(`We have encountered an error: ${err}`);
+                });
 
         }else{
             filterMenuShowToggle();
