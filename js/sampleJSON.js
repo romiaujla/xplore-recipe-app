@@ -1,4 +1,4 @@
-const responseJson = {
+const respJson = {
     "q": "chicken biryani",
     "from": 0,
     "to": 10,
