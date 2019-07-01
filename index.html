@@ -31,35 +31,43 @@
                         <div class="filter-box">
                             <button type="button" class="filter-button clicked" role="filter button">Filter<span class="down-arrow"> &#8681;</span></button>
                             <div class="filter-drop-down-menu">
-                                <div class="calorie-filter" role="calorie filter section">
-                                    <h3 class="filter-label">
-                                        Calories
-                                    </h3>
-                                    <label for="min-calorie" class="min-calorie">
-                                        <input type="number" name="min-calorie" id="min-calorie" class="min-calorie-textbox" placeholder="min" min="0" role="minimum calorie textbox">
-                                        <span class="min-calorie-span">Min</span>
-                                    </label>
-                                    <label for="max-calorie" class="max-calorie">
-                                        <input type="number" name="max-calorie" id="max-calorie" class="max-calorie-textbox" placeholder="max" min="0" role="maximum calorie textbox">
-                                        <span class="max-calorie-span">Max</span>
-                                    </label>
-                                </div>
-                                <div class="diet-allergen-wrapper">
-                                    <div class="diet-filter" role="diet filter section">
-                                        <h3 class="diet-filter-header">
-                                            Diet:
-                                        </h3>
-                                        <label for="vegetarian"><input type="checkbox" name="vegetarian" id="vegetarian" role="vegetarian checkbox">Vegetarian</label>
-                                        <label for="high-fiber"><input type="checkbox" name="high-fiber" id="high-fiber" role="high-fiber checkbox">High-Fiber</label>
-                                        <label for="high-protein"><input type="checkbox" name="high-protein" id="high-protein" role="high-protein checkbox">High-Protein</label>
-                                        <label for="low-carbs"><input type="checkbox" name="low-carbs" id="low-carbs" role="low-carbs checkbox">Low-Carbs</label>
-                                        <label for="low-fat"><input type="checkbox" name="low-fat" id="low-fat" role="low-fat checkbox">Low-Fat</label>
-                                        <label for="low-sodium"><input type="checkbox" name="low-sodium" id="low-sodium" role="low-sodium checkbox">Low-Sodium</label>
+                                <div class="calorie-diet-wrapper">
+                                    <div class="calorie-wrapper">
+                                        <div class="calorie-filter" role="calorie filter section">
+                                            <h3 class="calorie-filter-header">
+                                                Calories
+                                            </h3>
+                                            <div class="calorie-label-wrapper">
+                                                <label for="min-calorie" class="min-calorie">
+                                                    <input type="number" name="min-calorie" id="min-calorie" class="min-calorie-textbox" min="0" role="minimum calorie textbox">
+                                                    <span class="min-calorie-span">Min</span>
+                                                </label>
+                                                <label for="max-calorie" class="max-calorie">
+                                                    <input type="number" name="max-calorie" id="max-calorie" class="max-calorie-textbox" min="0" role="maximum calorie textbox">
+                                                    <span class="max-calorie-span">Max</span>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="allergies-filter" role="allergies filter section">
-                                        <h3 class="allergies-filter-header">
-                                            Allergies:
-                                        </h3>
+                                    <div class="diet-wrapper">
+                                        <div class="diet-filter" role="diet filter section">
+                                            <h3 class="diet-filter-header">
+                                                Diet
+                                            </h3>
+                                            <label for="vegetarian"><input type="checkbox" name="vegetarian" id="vegetarian" role="vegetarian checkbox">Vegetarian</label>
+                                            <label for="high-fiber"><input type="checkbox" name="high-fiber" id="high-fiber" role="high-fiber checkbox">High-Fiber</label>
+                                            <label for="high-protein"><input type="checkbox" name="high-protein" id="high-protein" role="high-protein checkbox">High-Protein</label>
+                                            <label for="low-carbs"><input type="checkbox" name="low-carbs" id="low-carbs" role="low-carbs checkbox">Low-Carbs</label>
+                                            <label for="low-fat"><input type="checkbox" name="low-fat" id="low-fat" role="low-fat checkbox">Low-Fat</label>
+                                            <label for="low-sodium"><input type="checkbox" name="low-sodium" id="low-sodium" role="low-sodium checkbox">Low-Sodium</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="allergies-filter" role="allergies filter section">
+                                    <h3 class="allergies-filter-header">
+                                        Allergies
+                                    </h3>
+                                    <div class="allergies-label-wrapper">
                                         <label for="gluten"><input type="checkbox" name="gluten" id="gluten" role="gluten checkbox">Gluten</label>
                                         <label for="dairy"><input type="checkbox" name="dairy" id="dairy" role="dairy checkbox">Dairy</label>
                                         <label for="peanuts"><input type="checkbox" name="peanuts" id="peanuts" role="peanuts checkbox">Peanuts</label>
