@@ -5,37 +5,39 @@ function displayResults(responseJson){
 
         $('.search-result-wrapper').append(`
 
+        <button type="button" class="recipe-button" value="${i}">
             <div class="recipe">
-                
                 <div class="recipe-info-container">
                     <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
                     <h2 class="recipe-name">
                         ${recipe.label}
                     </h2>   
-                    <div class="recipe-cal">
-                        Calories : ${Math.floor(recipe.calories)}
+                    <div class="recipe-info-wrapper">
+                        <div class="recipe-cal">
+                            Calories : ${Math.floor(recipe.calories)}
+                        </div>
+                        <div class="servings">
+                            Servings : ${recipe.yield}
+                        </div>
                     </div>
                 </div>
-
             </div>
+            <div class="view-recipe-wrapper">
+                <span class="view-recipe">
+                    View Recipe
+                </span>
+            </div>
+        </button>
 
         `);
     }
-
-    
-
-    
-    
 }
-
 function styleForRecipePage(){
-
     $('.app-info').hide();
     $('.header-section').removeClass('landing-page');
     $('.header-section').addClass('recipe-page');
     $('.header-section')
         .css('display', 'block');
-
 }
 
 function getHealth(){
