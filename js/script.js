@@ -50,10 +50,6 @@ function getCalories(){
     let minCal = $('.min-calorie-textbox').val();
     let maxCal = $('.max-calorie-textbox').val();
 
-    if(minCal > maxCal){
-        
-    }
-
     if(minCal === "" && maxCal === ""){
         return "";
     }else if(minCal !== "" && maxCal === ""){
@@ -95,12 +91,37 @@ function watchForm(){
     });
 }
 
+function checkMinMaxCal(){
+    let minCal = $('.min-calorie-textbox').val();
+    let maxCal = $('.max-calorie-textbox').val();
+    if(maxCal !== ""){
+        if(minCal > maxCal){
+            $('.cal-error').slideDown(100);
+        }else{
+            $('.cal-error').slideUp(100);
+        }
+    }
+}
+
+function handleCalorieError(){
+    
+    $('.max-calorie-textbox').on('focusout', function(e){
+        checkMinMaxCal();
+    })
+    $('.min-calorie-textbox').on('focusout', function(e){
+        checkMinMaxCal();
+    })
+
+}
+
 function filterMenuShowToggle(){
     // this function checks if filtermenu is visible then hides it
     // else otherwise displays it
     $('.filter-button').toggleClass('clicked');
     if($('.filter-drop-down-menu').css('display') === 'none'){
         $('.filter-drop-down-menu').slideDown(150);
+        handleCalorieError();
+
     }else{
         $('.filter-drop-down-menu').slideUp(150);
     }
