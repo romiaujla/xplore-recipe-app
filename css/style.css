@@ -97,8 +97,10 @@ a{
     z-index: 2;
     top:1px;
     cursor: pointer;
+    margin: 1px;
 }
 .clicked{
+    margin: 0px;
     border: 1px solid black;
     border-bottom-color: silver;
     background: silver;
