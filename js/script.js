@@ -1,16 +1,21 @@
 function watchForm(){
-    
-    // Submit Button Event Handler
-    $('.search-form').on('submit', function(e){
-        e.preventDefault();
+    // Handles the search query submission by the user (Find Button Click)
+}
 
-        // get value entered by the user
-        let userSearchQuery = $('.search-textbox').val();
+function handleFilterMenuClicks(){
+    // Handles the Reset Button and Done Button Click
+}
 
-        
-        
-    });
+function handleFilterButtonClick(){
+    // Handles opening and closing the filter menu 
+}
+
+function main(){
+
+    handleFilterButtonClick();
+    handleFilterMenuClicks();
+    watchForm()
 
 }
 
-$(watchForm);
+$(main);
