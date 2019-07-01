@@ -1,4 +1,30 @@
 function displayResults(responseJson){
+
+    for(let i = 0;i < responseJson.hits.length; i++){
+        let recipe = responseJson.hits[i].recipe;
+
+        $('.search-result-wrapper').append(`
+
+            <div class="recipe">
+                
+                <div class="recipe-info-container">
+                    <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
+                    <h2 class="recipe-name">
+                        ${recipe.label}
+                    </h2>   
+                    <div class="recipe-cal">
+                        Calories : ${Math.floor(recipe.calories)}
+                    </div>
+                </div>
+
+            </div>
+
+        `);
+    }
+
+    
+
+    
     
 }
 
@@ -138,7 +164,7 @@ function watchForm(){
             //     .then(response => response.json())
             //     .then(responseJson => {
             //         console.log(responseJson)
-                        displayResults(responseJson);
+                        displayResults(respJson);
             //     })
             //     .catch(err => {
             //         alert(`We have encountered an error: ${err}`);
