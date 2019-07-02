@@ -9,7 +9,7 @@ function getIngredientsHTML(recipe){
                     ${ingredients[i]}
                 </div>
                 <button type="button" class="add-ing-button" value="${i}">
-                    Add Item
+                    +
                 </button>
             </li>  
         `;
@@ -26,7 +26,7 @@ function renderRecipePage(recipe){
             <h2 class="recipe-page-name">
                 ${recipe.label}
             </h2>
-            <img src="${recipe.image}" alt="picture of a ${recipe.label}">
+            <img src="${recipe.image}" alt="picture of a ${recipe.label}" class="recipe-page-image">
             <div class="ingredients">
                 <div class="ing-heading-wrapper">
                     <h3 class="ing-header">
@@ -131,6 +131,7 @@ function displayResults(responseJson){
 function styleForRecipePage(){
     // this function handles changing some styles for the result page
     $('.app-info').hide();
+    $('main').removeClass('landing-page');
     $('.header-section').removeClass('landing-page');
     $('.header-section').addClass('recipe-page');
     $('.header-section')
