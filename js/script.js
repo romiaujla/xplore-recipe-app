@@ -1,11 +1,15 @@
+function displayRecipePage(){
+    
+}
+
 function handleViewRecipeButtonClick(responseJson){
 
-    $('.search-result-wrapper').on('click', 'button', function(e){
+    $('.search-result-wrapper').on('click', '.recipe-button', function(e){
 
         let recipeIndex = $(this).val();
         let recipe = responseJson.hits[recipeIndex].recipe;
-
         console.log(recipe);
+        displayRecipePage(recipe);
 
     });
 }
