@@ -1,69 +1,89 @@
-function displayRecipePage(){
+function renderRecipePage(recipe){
+    // renders the recipe page to the browser
     
 }
 
+
 function handleViewRecipeButtonClick(responseJson){
 
+    // handles the button click on the receipe thumbnails to take user the detailed info about the recipe
     $('.search-result-wrapper').on('click', '.recipe-button', function(e){
 
         let recipeIndex = $(this).val();
         let recipe = responseJson.hits[recipeIndex].recipe;
         console.log(recipe);
-        displayRecipePage(recipe);
+        renderRecipePage(recipe);
 
     });
 }
 
+
+function renderSearchResult(recipe, i){
+    // renders the search result to the browser
+    $('.search-result-wrapper').append(`
+            
+        <button type="button" class="recipe-button" value="${i}">
+            <div class="recipe">
+                <div class="recipe-info-container">
+                    <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
+                    <h2 class="recipe-name">
+                        ${recipe.label}
+                    </h2>   
+                    <div class="recipe-info-wrapper">
+                        <div class="recipe-cal">
+                            Calories per serving : ${Math.floor(recipe.calories/recipe.yield)}
+                        </div>
+                        <div class="servings">
+                            Servings : ${recipe.yield}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-recipe-wrapper">
+                <span class="view-recipe">
+                    View Details
+                </span>
+            </div>
+        </button>
+
+    `);
+}
+
 function displayResults(responseJson){
     
+    // this function handles the functionality for displaying the search result to the user
     $('.search-result-wrapper').html("");
 
     let recipesFound = responseJson.hits.length;
 
+    // if no recipes aer found display no result page
     if(recipesFound === 0){
         $('.search-result-wrapper').html(`
             <div class="no-recipe-found">
                 Sorry we were not able to find anything related to <span class="q">${responseJson.q}</span>. Try another search.
             </div>
         `);
+
+        // then set the focus to the search textbox and empty it
         $('.search-textbox').focus();
         $('.search-textbox').val("");
     }else{
+        // when results are found loop thru all the recipes to be displayed in the browser
         for(let i = 0;i < responseJson.hits.length; i++){
+
+            // getting the recipe object form the edamam api
             let recipe = responseJson.hits[i].recipe;
-    
-            $('.search-result-wrapper').append(`
-            
-            <button type="button" class="recipe-button" value="${i}">
-                <div class="recipe">
-                    <div class="recipe-info-container">
-                        <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
-                        <h2 class="recipe-name">
-                            ${recipe.label}
-                        </h2>   
-                        <div class="recipe-info-wrapper">
-                            <div class="recipe-cal">
-                                Calories per serving : ${Math.floor(recipe.calories/recipe.yield)}
-                            </div>
-                            <div class="servings">
-                                Servings : ${recipe.yield}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="view-recipe-wrapper">
-                    <span class="view-recipe">
-                        View Details
-                    </span>
-                </div>
-            </button>
-    
-            `);
+
+            // call back for the function to render search result
+            renderSearchResult(recipe, i);
         }
+        // callback to the function for handling the button clicks on the recipe thumbnails
         handleViewRecipeButtonClick(responseJson);
     }
 }
+
 function styleForRecipePage(){
+    // this function handles changing some styles for the result page
     $('.app-info').hide();
     $('.header-section').removeClass('landing-page');
     $('.header-section').addClass('recipe-page');
@@ -72,7 +92,7 @@ function styleForRecipePage(){
 }
 
 function getHealth(){
-    // returns the parameter value for allergies
+    // returns an array with health value parameters
     let healthParam = [];
 
     if($('#vegetarian:checked').val() === "on"){
@@ -95,7 +115,7 @@ function getHealth(){
 }
 
 function getDiet(){
-    // returns the parameter value for diet
+    // returns an array with diet value parameters
     let dietParam = [];
 
     if($('#high-protein:checked').val() === "on"){
@@ -115,9 +135,7 @@ function getDiet(){
 }
 
 function getCalories(){
-
     // returns the parameter value for calories
-
     let minCal = $('.min-calorie-textbox').val();
     let maxCal = $('.max-calorie-textbox').val();
 
@@ -133,7 +151,6 @@ function getCalories(){
 }
 
 function getParameters(){
-
     // return an object with all the parameters
     const params = {
         appid: "9f0ec4b3",
@@ -171,10 +188,12 @@ function getFetchURL(){
         }
     }
 
+    // return correctly formatted url for the fetch to work from the api
     return url;
 }
 
 function displayFetchingElement(){
+    // A div that is displayed while the results are being gathered from the api
     $('.search-result-wrapper').html(`
         <div class=fetching-info>
             Fetching Recipes
@@ -223,6 +242,7 @@ function watchForm(){
 }
 
 function checkMinMaxCal(){
+    // checked for the min and max calorie error, will show an error if min is greater than max cal
     let minCal = $('.min-calorie-textbox').val();
     let maxCal = $('.max-calorie-textbox').val();
     if(maxCal > 0){
@@ -239,9 +259,7 @@ function checkMinMaxCal(){
 }
 
 function handleCalorieError(){
-    
     // checks for error when max and min cal box leave focus
-
     $('.max-calorie-textbox').on('focusout', function(e){
         checkMinMaxCal();
     })
@@ -290,6 +308,7 @@ function handleFilterButtonClick(){
     });
 }
 
+// main function that calls back all the functions required to work when the DOM is ready.
 function main(){
 
     handleFilterButtonClick();
