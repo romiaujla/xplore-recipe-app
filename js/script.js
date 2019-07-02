@@ -1,3 +1,38 @@
+function getNutritionalFactsHTML(recipe){
+    // returns the nutritional facts table html
+    let nutFactsHTML = "";
+    
+
+    nutFactsHTML = `    
+        <div class="facts-header">
+            <h2 class="nut-header">
+                Nutrional Facts
+            </h2>
+            <p>Serving Size ${recipe.yield} </p>
+            <p>Total Calories ${Math.floor(recipe.calories)} kcal</p>
+        </div>
+        <div calss="facts-per-serving">
+            <p class="header btm-brd">
+                Amounts Per Serving
+            </p>
+            <div class="facts-cal-wrapper">
+                <p class="cal-text">
+                    Calories
+                </p>
+                <p class="cal-num">
+                    ${Math.floor(recipe.calories/recipe.yield)}
+                </p>
+            </div>
+            <p class="daily-val btm-brd">
+                % Daily Value*
+            </p>
+        </div>
+
+    `;
+
+    return nutFactsHTML;
+}
+
 function getIngredientsHTML(recipe){
     // renders the ingredient list to the recipe page
     const ingredients = recipe.ingredientLines;
@@ -44,7 +79,15 @@ function renderRecipePage(recipe){
             </div>
         </div>
         <div class="recipe-info-div">
-
+            <h3 class="instruction-header">
+                Instructions:
+            </h3>
+            <p class="ins-link-wrapper">
+                <a href="${recipe.url}" target="_blank">Source: ${recipe.source}</a>
+            </p>
+            <div class="nutritional-facts-chart-wrapper">
+                ${getNutritionalFactsHTML(recipe)}
+            </div>
         </div>
     `);
 }

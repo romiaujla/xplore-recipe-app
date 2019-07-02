@@ -20,7 +20,7 @@ input, div, header{
 }
 
 body{
-    background: lightgray;
+    /* background: lightgray; */
 }
 
 html, body{
@@ -56,8 +56,6 @@ a{
     border: 1px solid black;
     background: silver;
     z-index: 1;
-    border-radius: 5px;
-    border-top-left-radius: 0px;
 }
 .app-info{
     padding: 30px;
@@ -100,7 +98,6 @@ a{
     text-align: right;
     margin-top: 10px;
     width: 100%;
-    border-radius: 25px;
     border: none;
 }
 
@@ -189,10 +186,10 @@ a{
     width: 100%;
     padding: 10px 15px;
     font-size: 1em;
-    border-radius: 25px;
-    border: none;
     margin-bottom: 5px;
     cursor: pointer;
+    border: 1px solid rgba(223,225,229,1);
+    
 }
 .search-textbox:focus,
 .search-textbox:hover{
@@ -227,8 +224,6 @@ a{
     border: 1px solid black;
     border-bottom-color: silver;
     background: silver;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 .filter-drop-down-menu{
     display: none;
@@ -264,7 +259,6 @@ a{
 .recipe{
     transition: .5s ease;
     width:100%;
-    border-radius: 5px;
     opacity: 1;
 }
 .recipe img{
@@ -366,7 +360,6 @@ a{
 .add-all-button{
     order: none;
     padding: 8px 25px;
-    border-radius: 25px;
     cursor: pointer;
     background: darkorange;
     text-transform: uppercase;
@@ -394,4 +387,52 @@ button.add-ing-button {
     background: darkorange;
     align-self: center;
     cursor: pointer;
+}
+.instruction-header{
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+.ins-link-wrapper{
+    padding: 10px;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+/* Nutritional Facts Table */
+.nutritional-facts-chart-wrapper{
+    border: 1px solid black;
+    margin: 20px;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    line-height: 1.4;
+    font-size: small;
+}
+.nut-header{
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 0 0 0.25rem 0;
+}
+.facts-header{
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+}
+.btm-brd{
+    border-bottom: 1px solid black;
+}
+.top-brd{
+    border-top: 1px solid black;
+}
+.facts-cal-wrapper{
+    display: flex;
+    border-bottom: 5px solid black;
+    justify-content: space-between;
+    font-size: 1.6em;
+    padding: .1em;
+}
+.cal-text{
+    padding-left: 10px;
+}
+.daily-val {
+    text-align: right;
+    padding: .4em .1em 0 0;
 }
