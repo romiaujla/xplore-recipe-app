@@ -4,28 +4,36 @@ function getNutritionalFactsHTML(recipe){
     
 
     nutFactsHTML = `    
-        <div class="facts-header">
-            <h2 class="nut-header">
+        <div class="facts-header-wrapper">
+            <h2 class="facts-header bold">
                 Nutrional Facts
             </h2>
             <p>Serving Size ${recipe.yield} </p>
             <p>Total Calories ${Math.floor(recipe.calories)} kcal</p>
         </div>
         <div calss="facts-per-serving">
-            <p class="header btm-brd">
+            <p class="header">
                 Amounts Per Serving
             </p>
-            <div class="facts-cal-wrapper">
-                <p class="cal-text">
+            <div class="facts-cal-wrapper facts-flex">
+                <p class="facts-cal-text">
                     Calories
                 </p>
-                <p class="cal-num">
+                <p class="facts-cal-num">
                     ${Math.floor(recipe.calories/recipe.yield)}
                 </p>
             </div>
-            <p class="daily-val btm-brd">
+            <p class="daily-val brd-btm bold">
                 % Daily Value*
             </p>
+            <div class="facts-flex brd-btm">
+                <p>
+                    Total Fat
+                </p>
+                <p>
+                    
+                </p>
+            </div>
         </div>
 
     `;
