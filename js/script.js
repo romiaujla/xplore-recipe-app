@@ -1,6 +1,52 @@
+function getIngredientsHTML(recipe){
+    // renders the ingredient list to the recipe page
+    const ingredients = recipe.ingredientLines;
+    let ingredientsHTML = "";
+    for(let i = 0; i < ingredients.length; i++){
+        ingredientsHTML += `
+            <li class="ing-list-item">
+                <div class="ing-name">
+                    ${ingredients[i]}
+                </div>
+                <button type="button" class="add-ing-button" value="${i}">
+                    Add Item
+                </button>
+            </li>  
+        `;
+    }
+
+    return ingredientsHTML;
+}
+
 function renderRecipePage(recipe){
     // renders the recipe page to the browser
-    
+    $('.search-result-wrapper').html("");
+    $('.search-result-wrapper').append(`
+        <div class="recipe-info-div">
+            <h2 class="recipe-page-name">
+                ${recipe.label}
+            </h2>
+            <img src="${recipe.image}" alt="picture of a ${recipe.label}">
+            <div class="ingredients">
+                <div class="ing-heading-wrapper">
+                    <h3 class="ing-header">
+                        Ingredients: 
+                    </h3>
+                    <button type="button" class="add-all-button">
+                        Add All
+                    </button>
+                </div>
+                <div class="ing-list-wrapper">
+                    <ul class="ing-list">
+                        ${getIngredientsHTML(recipe)}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="recipe-info-div">
+
+        </div>
+    `);
 }
 
 
@@ -221,17 +267,17 @@ function watchForm(){
                 styleForRecipePage();
             }   
 
-            let fetchURL = getFetchURL();
+            // let fetchURL = getFetchURL();
 
-            fetch(fetchURL)
-                .then(response => response.json())
-                .then(responseJson => {
-                    console.log(responseJson);
-                    displayResults(responseJson);
-                })
-                .catch(err => {
-                    alert(`We have encountered an error: ${err}`);
-                });
+            // fetch(fetchURL)
+                // .then(response => response.json())
+                // .then(responseJson => {
+                    console.log(respJson);
+                    displayResults(respJson);
+                // })
+                // .catch(err => {
+                    // alert(`We have encountered an error: ${err}`);
+                // });
 
         }else{
             filterMenuShowToggle();
