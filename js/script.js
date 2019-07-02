@@ -1,3 +1,15 @@
+function handleViewRecipeButtonClick(responseJson){
+
+    $('.search-result-wrapper').on('click', 'button', function(e){
+
+        let recipeIndex = $(this).val();
+        let recipe = responseJson.hits[recipeIndex].recipe;
+
+        console.log(recipe);
+
+    });
+}
+
 function displayResults(responseJson){
     
     $('.search-result-wrapper').html("");
@@ -27,7 +39,7 @@ function displayResults(responseJson){
                         </h2>   
                         <div class="recipe-info-wrapper">
                             <div class="recipe-cal">
-                                Calories : ${Math.floor(recipe.calories)}
+                                Calories per serving : ${Math.floor(recipe.calories/recipe.yield)}
                             </div>
                             <div class="servings">
                                 Servings : ${recipe.yield}
@@ -44,6 +56,7 @@ function displayResults(responseJson){
     
             `);
         }
+        handleViewRecipeButtonClick(responseJson);
     }
 }
 function styleForRecipePage(){
@@ -107,9 +120,9 @@ function getCalories(){
     if(minCal === "" && maxCal === ""){
         return "";
     }else if(minCal !== "" && maxCal === ""){
-        return `${minCal}+`;
+        return `${minCal}%2B`;
     }else if(minCal === "" && maxCal !== ""){
-        return maxCal;
+        return `0-${maxCal}`;
     }else{
         return `${minCal}-${maxCal}`;
     }
@@ -137,7 +150,7 @@ function getFetchURL(){
     // https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free
 
     if(params.cal !== ""){
-        url += `&cal=${params.cal}`;
+        url += `&calories=${params.cal}`;
     }
 
     let diet = params.diet;
@@ -277,8 +290,7 @@ function main(){
 
     handleFilterButtonClick();
     handleFilterMenuClicks();
-    watchForm()
-
+    watchForm();
 }
 
 $(main);
