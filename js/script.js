@@ -78,6 +78,7 @@ function handleAddingUserInputGroceryItem(){
         const item = $('.search-result-wrapper').find('.add-item-textbox').val();
         addItemToGroceryList({id: cuid(),name: item});
         displayGroceryListPage();
+        $('.search-result-wrapper').find('.add-item-textbox').focus()
     });
 }
 
@@ -421,11 +422,11 @@ function getIngredientsHTML(recipe){
     return ingredientsHTML;
 }
 
-function removeItemFromGroceryList(itemId){
+function removeItemFromGroceryList(itemName){
     // removes an item from the grocery list
     let itemIndex = 0;
     STORE.groceryList.find((item, index) => {
-        if(item.id === itemId){
+        if(item.name === itemName){
             itemIndex = index;
         }
     });
@@ -454,8 +455,8 @@ function addItemToGroceryList(item){
 
 function handleRemoveOnMinuButtonClick(){
     $('.search-result-wrapper').on('click', '.remove-button', function(e){
-        const itemId = $(this).parent('li').find('div').attr('data-id');
-        removeItemFromGroceryList(itemId);
+        const itemName = $(this).parent('li').find('div').html();
+        removeItemFromGroceryList(itemName);
         console.log(STORE.groceryList);
         $(this).html('+');
         $(this).attr('class', 'add-ing-button');
