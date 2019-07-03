@@ -1,25 +1,29 @@
+function getFactsValue(facts, property){
+    if(facts.hasProperty(property)){
+        return `${facts.property.quantity}${facts.property.unit}`
+    }
+}
 
-
-function getNutritionalFactsHTML(recipe){
+function getFactsHTML(recipe){
     // returns the nutritional facts table html
-    let nutFactsHTML = "";
-    const nutFacts = recipe.totalNutrients;
+    let factsHTML = "";
+    const facts = recipe.totalNutrients;
     const servings = recipe.yield;
-    const totalFat = Math.floor(nutFacts.FAT.quantity/servings);
-    const satFat = Math.floor(nutFacts.FASAT.quantity/servings);
-    const transFat = Math.floor(nutFacts.FATRN.quantity/servings);
-    const cholestrol = Math.floor(nutFacts.CHOLE.quantity/servings);
-    const sodium = Math.floor(nutFacts.NA.quantity/servings);
-    const carbs = Math.floor(nutFacts.CHOCDF.quantity/servings);
-    const fiber = Math.floor(nutFacts.FIBTG.quantity/servings);
-    const protien = Math.floor(nutFacts.PROCNT.quantity/servings);
-    const sugar = Math.floor(nutFacts.SUGAR.quantity/servings);
-    const vitaminA = Math.floor(nutFacts.VITA_RAE.quantity/servings);
-    const vitaminC = Math.floor(nutFacts.VITC.quantity/servings);
-    const calcium = Math.floor(nutFacts.CA.quantity/servings);
-    const iron = Math.floor(nutFacts.FE.quantity/servings);
+    const totalFat = Math.floor(facts.FAT.quantity/servings);
+    const satFat = Math.floor(facts.FASAT.quantity/servings);
+    const transFat = getFactsValue(facts, "FATRN")
+    const cholestrol = getFactsValue(facts, "CHOLE");
+    const sodium = Math.floor(facts.NA.quantity/servings);
+    const carbs = Math.floor(facts.CHOCDF.quantity/servings);
+    const fiber = Math.floor(facts.FIBTG.quantity/servings);
+    const protien = Math.floor(facts.PROCNT.quantity/servings);
+    const sugar = Math.floor(facts.SUGAR.quantity/servings);
+    const vitaminA = Math.floor(facts.VITA_RAE.quantity/servings);
+    const vitaminC = Math.floor(facts.VITC.quantity/servings);
+    const calcium = Math.floor(facts.CA.quantity/servings);
+    const iron = Math.floor(facts.FE.quantity/servings);
 
-    nutFactsHTML = `    
+    factsHTML = `    
         <div class="facts-header-wrapper">
             <h2 class="facts-header bold">
                 Nutritional Facts
@@ -44,7 +48,7 @@ function getNutritionalFactsHTML(recipe){
             </p>
             <div class="facts-flex brd-btm bold">
                 <p>
-                    Total Fat ${totalFat}${nutFacts.FAT.unit}
+                    Total Fat ${totalFat}${facts.FAT.unit}
                 </p>
                 <p>
                     ${Math.floor((totalFat/65)*100)}%
@@ -52,7 +56,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm mrgn-left">
                 <p>
-                    Saturated Fat ${satFat}${nutFacts.FASAT.unit}
+                    Saturated Fat ${satFat}${facts.FASAT.unit}
                 </p>
                 <p>
                     ${Math.floor((satFat/20)*100)}%   
@@ -60,7 +64,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm mrgn-left">
                 <p>
-                    Trans Fat ${transFat}${nutFacts.FATRN.unit}
+                    Trans Fat ${transFat}
                 </p>
                 <p>
                     ${Math.floor((transFat/20)*100)}%   
@@ -68,7 +72,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm bold">
                 <p>
-                    Cholesterol ${cholestrol}${nutFacts.CHOLE.unit}
+                    Cholesterol ${cholestrol}
                 </p>
                 <p>
                     ${Math.floor((cholestrol/300)*100)}%   
@@ -76,7 +80,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm bold">
                 <p>
-                    Sodium ${sodium}${nutFacts.NA.unit}
+                    Sodium ${sodium}${facts.NA.unit}
                 </p>
                 <p>
                     ${Math.floor((sodium/2400)*100)}%   
@@ -84,7 +88,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm bold">
                 <p>
-                    Total Carbohydrates ${carbs}${nutFacts.CHOCDF.unit}
+                    Total Carbohydrates ${carbs}${facts.CHOCDF.unit}
                 </p>
                 <p>
                     ${Math.floor((carbs/300)*100)}%   
@@ -92,7 +96,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm mrgn-left">
                 <p>
-                    Dietary Fiber ${fiber}${nutFacts.FIBTG.unit}
+                    Dietary Fiber ${fiber}${facts.FIBTG.unit}
                 </p>
                 <p>
                     ${Math.floor((fiber/25)*100)}%   
@@ -100,17 +104,17 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm mrgn-left">
                 <p>
-                    Sugars ${sugar}${nutFacts.FIBTG.unit}
+                    Sugars ${sugar}${facts.FIBTG.unit}
                 </p>
             </div>
             <div class="facts-flex bold-brdr bold">
                 <p>
-                    Protien ${protien}${nutFacts.CHOCDF.unit}
+                    Protien ${protien}${facts.CHOCDF.unit}
                 </p>
             </div>
             <div class="facts-flex brd-btm">
                 <p>
-                    Vitamin A ${vitaminA}${nutFacts.VITA_RAE.unit}
+                    Vitamin A ${vitaminA}${facts.VITA_RAE.unit}
                 </p>
                 <p>
                     ${Math.floor((vitaminA/900)*100)}%   
@@ -118,7 +122,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm">
                 <p>
-                    Vitamin C ${vitaminC}${nutFacts.VITC.unit}
+                    Vitamin C ${vitaminC}${facts.VITC.unit}
                 </p>
                 <p>
                     ${Math.floor((vitaminC/60)*100)}%   
@@ -126,7 +130,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex brd-btm">
                 <p>
-                    Calcium ${calcium}${nutFacts.CA.unit}
+                    Calcium ${calcium}${facts.CA.unit}
                 </p>
                 <p>
                     ${Math.floor((calcium/1100)*100)}%   
@@ -134,7 +138,7 @@ function getNutritionalFactsHTML(recipe){
             </div>
             <div class="facts-flex">
                 <p>
-                    Iron ${iron}${nutFacts.CA.unit}
+                    Iron ${iron}${facts.CA.unit}
                 </p>
                 <p>
                     ${Math.floor((iron/14)*100)}%   
@@ -251,7 +255,7 @@ function getNutritionalFactsHTML(recipe){
 
     `;
 
-    return nutFactsHTML;
+    return factsHTML;
 }
 
 function getIngredientsHTML(recipe){
@@ -315,7 +319,7 @@ function renderRecipePage(recipe){
                 <a href="${recipe.url}" target="_blank">Source: ${recipe.source}</a>
             </p>
             <div class="nutritional-facts-chart-wrapper">
-                ${getNutritionalFactsHTML(recipe)}
+                ${getFactsHTML(recipe)}
             </div>
         </div>
     `);
