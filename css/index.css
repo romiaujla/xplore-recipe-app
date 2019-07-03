@@ -51,7 +51,7 @@ a{
     margin-right: 10px;
     padding: 20px 15px;
     position: absolute;
-    width: 95%;
+    width: 85%;
     max-width: 450px;
     border: 1px solid black;
     background: silver;
@@ -122,7 +122,7 @@ a{
 .allergies-filter label input{
     margin-right: 5px;
     position: relative;
-    top: -2px;
+    top: -1px;
 }
 .allergies-label-wrapper{
     padding: 5px 0px 20px 0px;
@@ -178,11 +178,15 @@ a{
     font-weight: 800;
     padding: 20px;
 }
-.search-form fieldset{
+.search-form fieldset,
+.add-item-form fieldset{
     border: none;
+}
+.search-form fieldset{
     padding: 10px;
 }
-.search-textbox{
+.search-textbox,
+.add-item-textbox{
     width: 100%;
     padding: 10px 15px;
     font-size: 1em;
@@ -192,7 +196,9 @@ a{
     
 }
 .search-textbox:focus,
-.search-textbox:hover{
+.search-textbox:hover,
+.add-item-textbox:focus,
+.add-item-textbox:hover{
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     border-color: rgba(223,225,229,0);
 }
@@ -357,8 +363,9 @@ a{
     border-bottom: 2px solid;
     align-items:center;
 }
-.add-all-button{
-    order: none;
+.add-all-button,
+.add-item-submit-button{
+    border: none;
     padding: 8px 25px;
     cursor: pointer;
     background: darkorange;
@@ -474,4 +481,21 @@ button.add-ing-button {
 }
 .sub-p{
     padding: 5px;
+}
+
+/* Grocery List Style */
+.grocery-list-page{
+    margin: 0px 10px;
+}
+.grocery-list-heading{
+    border-bottom: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.add-item-form-wrapper{
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }

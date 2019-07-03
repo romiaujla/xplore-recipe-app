@@ -1,3 +1,42 @@
+function displayGroceryListPage(){
+    // this function displays the grocery list page.
+    console.log(STORE.previousPageState);
+    $('.search-result-wrapper').html(`
+        <div class="grocery-list-page">
+            <h2 class="grocery-list-heading">
+                Grocery List
+            </h2>   
+            <div class="input-section">
+                <form action="" class="add-item-form" role="add item form">
+                    <fieldset>
+                        <legend role="add item form"></legend>
+                        <div class="add-item-form-wrapper">
+                            <input type="text" role="add item textbox" name="" id="" class="add-item-textbox" placeholder="Eg: Oranges" required>
+                            <button type="submit" class="add-item-submit-button">Add Item</button>
+                        </div>
+                    </fieldset>
+                </form>   
+            </div>
+        </div>
+    `);
+}
+
+function handleGroceryListClick(){
+
+    // handles the button click for the grocery list and renders it to the browser
+    $('.grocery-list-button').on('click', function(e){
+
+        STORE.previousPageState = $('.search-result-wrapper').html();
+        $('.search-result-wrapper').html("");
+        hideFilterMenu();
+        // call only if the header-section has the landing-page class in it
+        if($('.header-section').hasClass('landing-page')){
+            styleForOtherPages();
+        }   
+        displayGroceryListPage();
+    })
+}
+
 // Returns the property values of the api
 // stored under 
 // we are using digest = facts
@@ -511,7 +550,7 @@ function displayResults(responseJson){
     }
 }
 
-function styleForRecipePage(){
+function styleForOtherPages(){
     // this function handles changing some styles for the result page
     $('.app-info').hide();
     $('main').removeClass('landing-page');
@@ -631,24 +670,29 @@ function displayFetchingElement(){
     `);
 }
 
+function hideFilterMenu(){
+    // hides the filter menu
+    if($('.filter-drop-down-menu').css('display') !== "none"){
+        $('.filter-drop-down-menu').slideUp(150);
+        $('.filter-button').toggleClass('clicked');
+    }
+}
+
 function watchForm(){
 
     // Handles the search query submission by the user (Find Button Click)
     $('form').on('submit', function(e){
+        
         e.preventDefault();
         $('.search-result-wrapper').html("");
         if($('.cal-error').css('display') === "none"){
             
             displayFetchingElement();
-
-            if($('.filter-drop-down-menu').css('display') !== "none"){
-                $('.filter-drop-down-menu').slideUp(150);
-                $('.filter-button').toggleClass('clicked');
-            }
+            hideFilterMenu();       
 
             // call only if the header-section has the landing-page class in it
             if($('.header-section').hasClass('landing-page')){
-                styleForRecipePage();
+                styleForOtherPages();
             }   
 
             // let fetchURL = getFetchURL();
@@ -744,6 +788,7 @@ function main(){
 
     handleFilterButtonClick();
     handleFilterMenuClicks();
+    handleGroceryListClick();
     watchForm();
 }
 

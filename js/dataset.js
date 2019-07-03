@@ -1,3 +1,4 @@
 const STORE = {
-    groceryList: []
+    groceryList: [],
+    previousPageState: ""
 }
