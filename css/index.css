@@ -4,6 +4,8 @@
     font-family: sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Nunito', sans-serif;
+    color: #00447F;
 }
 
 .container{
@@ -22,7 +24,7 @@ html, body{
     height: 100%;
 }
 body{
-    background: gold;
+    background: #FFD700;
 }
 ul{
     list-style: none;   
@@ -33,29 +35,6 @@ a{
 }
 body button:disabled{
     color: gray;
-}
-
-.app-button{
-    border: none;
-    background: black;
-    color: white;
-    padding: 8px 20px;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.filter-drop-down-menu{
-    margin-right: 10px;
-    padding: 20px 15px;
-    position: absolute;
-    width: 85%;
-    max-width: 450px;
-    border: 1px solid black;
-    background: silver;
-    z-index: 1;
 }
 .app-info{
     padding: 30px;
@@ -143,7 +122,7 @@ body button:disabled{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #0F2591;
     padding-bottom: 10px;
 }
 .calorie-wrapper{
@@ -166,6 +145,10 @@ body button:disabled{
 /* Landing Page */
 .landing-page{
     height: 100%;
+}
+.landing-page .logo{
+    font-size: 3.5em;
+    letter-spacing: .1em;
 }
 .header-section{
     display: flex;
@@ -190,10 +173,9 @@ body button:disabled{
     width: 100%;
     padding: 10px 15px;
     font-size: 1em;
-    margin-bottom: 5px;
     cursor: pointer;
     border: 1px solid rgba(223,225,229,1);
-    
+    color: black;
 }
 .search-textbox:focus,
 .search-textbox:hover,
@@ -201,6 +183,7 @@ body button:disabled{
 .add-item-textbox:hover{
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     border-color: rgba(223,225,229,0);
+    background: #F2F2F2;
 }
 .search-textbox:focus{
     cursor: text;
@@ -208,33 +191,52 @@ body button:disabled{
 .filter-grocery-wrapper{
     display: flex;
     justify-content: space-between;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 .filter-button,
 .grocery-list-button,
 .submit-button{
     position: relative;
     border: none;
-    text-decoration: underline;
-    color: blue;
-    background: inherit;
+    color: white;
     font-size: .9em;
     padding: 5px 15px;
     z-index: 2;
-    top:1px;
     cursor: pointer;
-    margin: 1px;
+    background: #0065b8;
+    font-weight: 800;
+    text-transform: uppercase;
 }
+.filter-button:hover,
+.grocery-list-button:hover,
+.submit-button:hover,
 .clicked{
-    margin: 0px;
-    border: 1px solid black;
-    border-bottom-color: silver;
-    background: silver;
+    background: #0087f5;
+}
+.filter-button svg {
+    fill: white;
+    position: relative;
+    top: 3px;
+}
+.app-button{
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
 }
 .filter-drop-down-menu{
     display: none;
+    margin-right: 10px;
+    padding: 20px 15px;
+    position: absolute;
+    width: 85%;
+    max-width: 450px;
+    z-index: 1;
 }
-
 .cal-error{
     display: none;
     color: maroon;
