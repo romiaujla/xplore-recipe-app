@@ -398,8 +398,8 @@ button.add-ing-button {
     margin-bottom: 30px;
 }
 /* Nutritional Facts Table */
-.bold{
-    font-weight: 600;
+.bold, .bold *{
+    font-weight: 800;
 }
 .nutritional-facts-chart-wrapper{
     border: 1px solid black;
@@ -421,11 +421,10 @@ button.add-ing-button {
 .brd-btm{
     border-bottom: 1px solid black;
 }
-.top-brd{
-    border-top: 1px solid black;
+.bold-brdr{
+    border-bottom: 5px solid black;
 }
 .facts-cal-wrapper{
-    border-bottom: 5px solid black;
     font-size: 1.6em;
     padding: .1em;
 }
@@ -446,4 +445,29 @@ button.add-ing-button {
 }
 .facts-flex p{
     padding: .4em 0;
+}
+.sub-div-1{
+    border-bottom: 1px solid black;
+}
+.sub-div-1 p{
+    padding-bottom: 0em !important;
+}
+.sub-p-1{
+    flex: 2;
+}
+.sub-p-2,
+.sub-p-3,
+.sub-p-4{
+    flex: 1;
+    text-align: left;
+}
+.facts-sub{
+    font-size: 0.8em;
+}
+.sub-tab{
+    margin-left: 5px;
+    margin-right: -5px;
+}
+.sub-p{
+    padding: 5px;
 }

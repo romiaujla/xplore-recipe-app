@@ -1,7 +1,21 @@
 function getNutritionalFactsHTML(recipe){
     // returns the nutritional facts table html
     let nutFactsHTML = "";
-    
+    const nutFacts = recipe.totalNutrients;
+    const servings = recipe.yield;
+    const totalFat = Math.floor(nutFacts.FAT.quantity/servings);
+    const satFat = Math.floor(nutFacts.FASAT.quantity/servings);
+    const transFat = Math.floor(nutFacts.FATRN.quantity/servings);
+    const cholestrol = Math.floor(nutFacts.CHOLE.quantity/servings);
+    const sodium = Math.floor(nutFacts.NA.quantity/servings);
+    const carbs = Math.floor(nutFacts.CHOCDF.quantity/servings);
+    const fiber = Math.floor(nutFacts.FIBTG.quantity/servings);
+    const protien = Math.floor(nutFacts.PROCNT.quantity/servings);
+    const sugar = Math.floor(nutFacts.SUGAR.quantity/servings);
+    const vitaminA = Math.floor(nutFacts.VITA_RAE.quantity/servings);
+    const vitaminC = Math.floor(nutFacts.VITC.quantity/servings);
+    const calcium = Math.floor(nutFacts.CA.quantity/servings);
+    const iron = Math.floor(nutFacts.FE.quantity/servings);
 
     nutFactsHTML = `    
         <div class="facts-header-wrapper">
@@ -15,25 +29,222 @@ function getNutritionalFactsHTML(recipe){
             <p class="header">
                 Amounts Per Serving
             </p>
-            <div class="facts-cal-wrapper facts-flex">
+            <div class="facts-cal-wrapper bold-brdr facts-flex">
                 <p class="facts-cal-text">
                     Calories
                 </p>
                 <p class="facts-cal-num">
-                    ${Math.floor(recipe.calories/recipe.yield)}
+                    ${Math.floor(recipe.calories/servings)}
                 </p>
             </div>
             <p class="daily-val brd-btm bold">
                 % Daily Value*
             </p>
-            <div class="facts-flex brd-btm">
+            <div class="facts-flex brd-btm bold">
                 <p>
-                    Total Fat
+                    Total Fat ${totalFat}${nutFacts.FAT.unit}
                 </p>
                 <p>
-                    
+                    ${Math.floor((totalFat/65)*100)}%
                 </p>
             </div>
+            <div class="facts-flex brd-btm mrgn-left">
+                <p>
+                    Saturated Fat ${satFat}${nutFacts.FASAT.unit}
+                </p>
+                <p>
+                    ${Math.floor((satFat/20)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm mrgn-left">
+                <p>
+                    Trans Fat ${transFat}${nutFacts.FATRN.unit}
+                </p>
+                <p>
+                    ${Math.floor((transFat/20)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm bold">
+                <p>
+                    Cholesterol ${cholestrol}${nutFacts.CHOLE.unit}
+                </p>
+                <p>
+                    ${Math.floor((cholestrol/300)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm bold">
+                <p>
+                    Sodium ${sodium}${nutFacts.NA.unit}
+                </p>
+                <p>
+                    ${Math.floor((sodium/2400)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm bold">
+                <p>
+                    Total Carbohydrates ${carbs}${nutFacts.CHOCDF.unit}
+                </p>
+                <p>
+                    ${Math.floor((carbs/300)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm mrgn-left">
+                <p>
+                    Dietary Fiber ${fiber}${nutFacts.FIBTG.unit}
+                </p>
+                <p>
+                    ${Math.floor((fiber/25)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm mrgn-left">
+                <p>
+                    Sugars ${sugar}${nutFacts.FIBTG.unit}
+                </p>
+            </div>
+            <div class="facts-flex bold-brdr bold">
+                <p>
+                    Protien ${protien}${nutFacts.CHOCDF.unit}
+                </p>
+            </div>
+            <div class="facts-flex brd-btm">
+                <p>
+                    Vitamin A ${vitaminA}${nutFacts.VITA_RAE.unit}
+                </p>
+                <p>
+                    ${Math.floor((vitaminA/900)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm">
+                <p>
+                    Vitamin C ${vitaminC}${nutFacts.VITC.unit}
+                </p>
+                <p>
+                    ${Math.floor((vitaminC/60)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm">
+                <p>
+                    Calcium ${calcium}${nutFacts.CA.unit}
+                </p>
+                <p>
+                    ${Math.floor((calcium/1100)*100)}%   
+                </p>
+            </div>
+            <div class="facts-flex brd-btm">
+                <p>
+                    Iron ${iron}${nutFacts.CA.unit}
+                </p>
+                <p>
+                    ${Math.floor((iron/14)*100)}%   
+                </p>
+            </div>
+            <div class="facts-sub">
+                <p class="sub-p">
+                * Percent Daily Values are based on a 2,000 calorie diet.
+                Your Daily Values may be higher or lower depending on your calorie needs:
+                </p>
+                <div class="sub-div-1 facts-flex">
+                    <p class="sub-p-1">
+                    </p>
+                    <p class="sub-p-2">
+                        Calories:
+                    </p>
+                    <p class="sub-p-3">
+                        2,000
+                    </p>
+                    <p class="sub-p-4">
+                        2,500
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1">
+                        Total Fat
+                    </p>
+                    <p class="sub-p-2">
+                        Less Than:
+                    </p>
+                    <p class="sub-p-3">
+                        65g
+                    </p>
+                    <p class="sub-p-4">
+                        80g
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1 sub-tab">
+                        Saturated Fat
+                    </p>
+                    <p class="sub-p-2">
+                        Less Than:
+                    </p>
+                    <p class="sub-p-3">
+                        20g
+                    </p>
+                    <p class="sub-p-4">
+                        25g
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1">
+                        Cholestrol
+                    </p>
+                    <p class="sub-p-2">
+                        Less Than:
+                    </p>
+                    <p class="sub-p-3">
+                        300mg
+                    </p>
+                    <p class="sub-p-4">
+                        300mg
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1">
+                        Sodium
+                    </p>
+                    <p class="sub-p-2">
+                        Less Than:
+                    </p>
+                    <p class="sub-p-3">
+                        2400mg
+                    </p>
+                    <p class="sub-p-4">
+                        2400mg
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1">
+                        Total Carbohydrates
+                    </p>
+                    <p class="sub-p-2">
+                        
+                    </p>
+                    <p class="sub-p-3">
+                        300g
+                    </p>
+                    <p class="sub-p-4">
+                        375g
+                    </p>
+                </div>
+                <div class="sub-div facts-flex">
+                    <p class="sub-p-1 sub-tab">
+                        Dietary Fiber
+                    </p>
+                    <p class="sub-p-2">
+                        
+                    </p>
+                    <p class="sub-p-3">
+                        25g
+                    </p>
+                    <p class="sub-p-4">
+                        30g
+                    </p>
+                </div>
+            </div>
+            
+
+            
+
         </div>
 
     `;
