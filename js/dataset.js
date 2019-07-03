@@ -1,1 +1,3 @@
-const groceryList = {};
+const STORE = {
+    groceryList: []
+}

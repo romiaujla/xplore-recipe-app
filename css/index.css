@@ -378,15 +378,16 @@ li.ing-list-item {
     flex: 6;
     padding-right: 5px;
 }
+button.remove-button,
 button.add-ing-button {
-    padding: 1px 7px 3px 7px;
-    border-radius: 50%;
+    padding: 2px 7px;
     text-transform: uppercase;
     font-size: 1.1em;
     font-weight: 600;
     background: darkorange;
     align-self: center;
     cursor: pointer;
+    font-family: 'Courier New';
 }
 .instruction-header{
     padding: 10px;

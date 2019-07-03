@@ -317,9 +317,7 @@ function getIngredientsHTML(recipe){
     for(let i = 0; i < ingredients.length; i++){
         ingredientsHTML += `
             <li class="ing-list-item">
-                <div class="ing-name">
-                    ${ingredients[i]}
-                </div>
+                <div class="ing-name">${ingredients[i]}</div>
                 <button type="button" class="add-ing-button" value="${i}">
                     +
                 </button>
@@ -330,13 +328,65 @@ function getIngredientsHTML(recipe){
     return ingredientsHTML;
 }
 
-function handleAddAllIngredientsbutton(ingredients){
+function removeItemFromGroceryList(item){
+    // removes an item from the grocery list
+    let itemIndex = "";
+    STORE.groceryList.find((gItem, index) => {
+        if(gItem.name === item){
+            itemIndex = index;
+        }
+    });
+    STORE.groceryList.splice(itemIndex, 1);
+}
+
+function addItemToGroceryList(item){
+    // adds item to the grocery list
     
+    let hasItem = false;
+    // Check If item already exists
+    STORE.groceryList.forEach(gItem =>{
+        if(gItem.name === item){
+            console.log("item exists");
+            hasItem = true;
+        }
+    });
+    
+    // Add item only if it does not exist in the list already
+    if(!hasItem){
+        STORE.groceryList.push({
+            id: cuid(),
+            name: item
+        });
+    }
+}
+
+function handleRemovingOneIngredient(ingredients){
+    $('.search-result-wrapper').on('click', '.remove-button', function(e){
+        removeItemFromGroceryList(ingredients[$(this).val()]);
+        console.log(STORE.groceryList);
+        $(this).html('+');
+        $(this).attr('class', 'add-ing-button');
+    })
+}
+
+function handleAddAllIngredientsbutton(ingredients){
     // adds all ingredients to the grocery list
+    $('.search-result-wrapper').on('click','.add-all-button',function(e){
+        ingredients.map(ingredient => addItemToGroceryList(ingredient));
+        $('.search-result-wrapper .add-ing-button').html('-');
+        $('.search-result-wrapper .add-ing-button').attr('class', 'remove-button');
+        console.log(STORE.groceryList);
+    });
 }
 
 function handleAddOneIngredient(ingredients){
     // adds only selected ingredient to the grocery list
+    $('.search-result-wrapper').on('click', '.add-ing-button', function(e){
+        addItemToGroceryList(ingredients[$(this).val()]);
+        console.log(STORE.groceryList);
+        $(this).html("-");
+        $(this).attr('class','remove-button');
+    });
 }
 
 function renderRecipePage(recipe){
@@ -379,6 +429,7 @@ function renderRecipePage(recipe){
 
     handleAddAllIngredientsbutton(recipe.ingredientLines);
     handleAddOneIngredient(recipe.ingredientLines);
+    handleRemovingOneIngredient(recipe.ingredientLines);
 }
 
 
@@ -600,17 +651,18 @@ function watchForm(){
                 styleForRecipePage();
             }   
 
-            let fetchURL = getFetchURL();
+            // let fetchURL = getFetchURL();
 
-            fetch(fetchURL)
-                .then(response => response.json())
-                .then(responseJson => {
+            // fetch(fetchURL)
+            //     .then(response => response.json())
+            //     .then(responseJson => {
                     // console.log(responseJson);
-                    displayResults(responseJson);
-                })
-                .catch(err => {
-                    alert(`We have encountered an error: ${err}`);
-                });
+                    displayResults(respJson);
+                    // displayResults(responseJson);
+                // })
+                // .catch(err => {
+                //     alert(`We have encountered an error: ${err}`);
+                // });
 
         }else{
             filterMenuShowToggle();
