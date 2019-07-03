@@ -60,6 +60,7 @@ function renderGroceryList(){
 }
 
 function displayGroceryListPage(){
+    // this function kind of is used for refreshing the grocerylist page, everytime an item is added or removed
     STORE.previousPageState = $('.search-result-wrapper').html();
     $('.search-result-wrapper').html("");
     hideFilterMenu();
@@ -71,6 +72,7 @@ function displayGroceryListPage(){
 }
 
 function handleAddingUserInputGroceryItem(){
+    // handles adding the item to the grocery list when the user enters their own item in the input box
     $('.search-result-wrapper').on('submit', '.add-item-form', function(e){
         e.preventDefault();
         const item = $('.search-result-wrapper').find('.add-item-textbox').val();
@@ -79,7 +81,7 @@ function handleAddingUserInputGroceryItem(){
     });
 }
 
-function handleGroceryListClick(){
+function handleGroceryListButtonClick(){
     // handles the button click for the grocery list and renders it to the browser
     $('.grocery-list-button').on('click', function(e){
         $('.search-result-wrapper').attr('data-page', 'grocery');
@@ -135,6 +137,8 @@ function getFactsHTML(recipe){
     // all the information is given in total, so servings is stored and then
     // divide the total value with the serving to "Amount per serving"
     const servings = recipe.yield;
+
+    // getting all the values to display to the user fomr the edamam response object
     const totalFat = getPropertyValue(facts, "FAT", "total", servings);
     const totalFatDV = getPropertyValue(facts, "FAT", "daily", servings);
     const satFat = getSubPropertyValue(facts, "FAT", "FASAT", "total", servings);
@@ -435,7 +439,6 @@ function addItemToGroceryList(item){
     // Check If item already exists
     STORE.groceryList.forEach(gItem =>{
         if(gItem.name === item.name){
-            console.log("item exists");
             hasItem = true;
         }
     });
@@ -460,7 +463,6 @@ function handleRemoveOnMinuButtonClick(){
         // if the page open is grocery page then just reload the page
         if($('.search-result-wrapper').attr('data-page') === 'grocery')
         {
-            console.log(`entered`);
             displayGroceryListPage();
         }
     })
@@ -472,7 +474,6 @@ function handleAddAllIngredientsbutton(){
         $('.search-result-wrapper').find('.ing-name').each(function(index){
             addItemToGroceryList({id: $(this).attr("data-id"), name: $(this).html()});
         });
-        console.log(STORE.groceryList);
         $('.search-result-wrapper .add-ing-button').html('-');
         $('.search-result-wrapper .add-ing-button').attr('class', 'remove-button');
     });
@@ -485,7 +486,6 @@ function handleAddOnPlusButton(){
         addItemToGroceryList({id: itemElement.attr("data-id"), name: itemElement.html()});
         $(this).html("-");
         $(this).attr('class','remove-button');
-        console.log(STORE.groceryList);
     });
 }
 
@@ -537,7 +537,6 @@ function handleViewRecipeButtonClick(){
 
         let recipeIndex = $(this).val();
         let recipe = STORE.responseJson.hits[recipeIndex].recipe;
-        console.log(recipe);
         renderRecipePage(recipe);
 
     });
@@ -779,13 +778,23 @@ function checkMinMaxCal(){
     if(maxCal > 0){
         if(parseInt(minCal,10) > parseInt(maxCal,10)){
             $('.cal-error').slideDown(100);
+            $('body').find('button').each(function(index){
+                if($(this).attr('type') !== 'reset'){
+                    $(this).attr('disabled','true');
+                }                
+            });
         }else{
-            console.log(`${minCal} < ${maxCal}`);
             $('.cal-error').slideUp(100);
+            $('body').find('button').each(function(index){
+                $(this).removeAttr('disabled');
+            });
         }
     }
     if(maxCal === "" || minCal === ""){
         $('.cal-error').slideUp(100);
+        $('body').find('button').each(function(index){
+            $(this).removeAttr('disabled');
+        });
     }
 }
 
@@ -820,8 +829,9 @@ function handleFilterMenuClicks(){
         e.preventDefault();
         // only reset the filter drop down menu and not the serch box text. 
         $('.filter-drop-down-menu input[type="number"]').val("");
-        $('.filter-drop-down-menu input[type="checkbox"]').prop('checked', false);
-        $('.cal-error').hide();
+        $('.filter-drop-down-menu input[type="checkbox"]').prop('checked', false);   
+        // blur the min textbox so the errors can hide and if any buttons are disabled they will turn active
+        $('.min-calorie-textbox').blur();
         $('.min-calorie-textbox').focus();
 
     });
@@ -844,7 +854,7 @@ function main(){
 
     handleFilterButtonClick();
     handleFilterMenuClicks();
-    handleGroceryListClick();
+    handleGroceryListButtonClick();
     handleViewRecipeButtonClick();
     handleAddAllIngredientsbutton();
     handleAddOnPlusButton();

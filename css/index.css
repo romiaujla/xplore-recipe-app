@@ -34,6 +34,9 @@ ul{
 a{
     text-decoration: none;
 }
+body button:disabled{
+    color: gray;
+}
 
 .app-button{
     border: none;
