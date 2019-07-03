@@ -1,15 +1,50 @@
-function displayGroceryListPage(){
+
+function getItemHTML(){
+    // return the list item HTML for all items in the grocerylist
+    let items = STORE.groceryList.map(item =>{
+        return `
+            <li class="items-list-item">
+                <div class="item-name">${item.name}</div>
+                <button type="button" class="remove-button" value="${item.id}">-</button>
+            </li>`;
+    })
+    return items.join('');
+}
+
+function groceryListItemHTML(){
+    // return the HTML for rendering the grocery list to the browser
+
+    if(STORE.groceryList.length > 0){
+        // when there are items in the list
+        return `
+            <h4 class="items-header">
+                Items:
+            </h4>
+            <ul class="items-list">${getItemHTML()}</ul>
+        `;
+    }else{
+        // when there are no items in the list
+        return `
+            <h4 class="no-item-header">
+                Your Grocery List Is Empty
+            </h4>
+            <img src="img/empty-cart.jpeg" alt="empty shopping cart" class="empty-item-image">
+            <p class="img-source">Photo by <a href="https://unsplash.com/@thethinblackframe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">David Clarke</a> on <a href="https://unsplash.com/search/photos/shopping-cart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></p>
+        `;
+        
+    }
+}
+
+function renderGroceryList(){
     // this function displays the grocery list page.
-    console.log(STORE.previousPageState);
+    // console.log(STORE.previousPageState);
     $('.search-result-wrapper').html(`
+        
         <div class="grocery-list-page">
-            <h2 class="grocery-list-heading">
-                Grocery List
-            </h2>   
             <div class="input-section">
                 <form action="" class="add-item-form" role="add item form">
                     <fieldset>
-                        <legend role="add item form"></legend>
+                        <legend role="add item form">Add your own item to the list:</legend>
                         <div class="add-item-form-wrapper">
                             <input type="text" role="add item textbox" name="" id="" class="add-item-textbox" placeholder="Eg: Oranges" required>
                             <button type="submit" class="add-item-submit-button">Add Item</button>
@@ -17,22 +52,37 @@ function displayGroceryListPage(){
                     </fieldset>
                 </form>   
             </div>
+            <div class="list-items">
+                ${groceryListItemHTML()}
+            </div>
         </div>
     `);
 }
 
-function handleGroceryListClick(){
+function displayGroceryListPage(){
+    STORE.previousPageState = $('.search-result-wrapper').html();
+    $('.search-result-wrapper').html("");
+    hideFilterMenu();
+    // call only if the header-section has the landing-page class in it
+    if($('.header-section').hasClass('landing-page')){
+        styleForOtherPages();
+    }   
+    renderGroceryList();
+}
 
+function handleAddingUserInputGroceryItem(){
+    $('.search-result-wrapper').on('submit', '.add-item-form', function(e){
+        e.preventDefault();
+        const item = $('.search-result-wrapper').find('.add-item-textbox').val();
+        addItemToGroceryList({id: cuid(),name: item});
+        displayGroceryListPage();
+    });
+}
+
+function handleGroceryListClick(){
     // handles the button click for the grocery list and renders it to the browser
     $('.grocery-list-button').on('click', function(e){
-
-        STORE.previousPageState = $('.search-result-wrapper').html();
-        $('.search-result-wrapper').html("");
-        hideFilterMenu();
-        // call only if the header-section has the landing-page class in it
-        if($('.header-section').hasClass('landing-page')){
-            styleForOtherPages();
-        }   
+        $('.search-result-wrapper').attr('data-page', 'grocery');
         displayGroceryListPage();
     })
 }
@@ -356,7 +406,7 @@ function getIngredientsHTML(recipe){
     for(let i = 0; i < ingredients.length; i++){
         ingredientsHTML += `
             <li class="ing-list-item">
-                <div class="ing-name">${ingredients[i]}</div>
+                <div class="ing-name" data-id="${cuid()}">${ingredients[i]}</div>
                 <button type="button" class="add-ing-button" value="${i}">
                     +
                 </button>
@@ -367,11 +417,11 @@ function getIngredientsHTML(recipe){
     return ingredientsHTML;
 }
 
-function removeItemFromGroceryList(item){
+function removeItemFromGroceryList(itemId){
     // removes an item from the grocery list
-    let itemIndex = "";
-    STORE.groceryList.find((gItem, index) => {
-        if(gItem.name === item){
+    let itemIndex = 0;
+    STORE.groceryList.find((item, index) => {
+        if(item.id === itemId){
             itemIndex = index;
         }
     });
@@ -384,7 +434,7 @@ function addItemToGroceryList(item){
     let hasItem = false;
     // Check If item already exists
     STORE.groceryList.forEach(gItem =>{
-        if(gItem.name === item){
+        if(gItem.name === item.name){
             console.log("item exists");
             hasItem = true;
         }
@@ -393,44 +443,56 @@ function addItemToGroceryList(item){
     // Add item only if it does not exist in the list already
     if(!hasItem){
         STORE.groceryList.push({
-            id: cuid(),
-            name: item
+            id: item.id,
+            name: item.name
         });
     }
 }
 
-function handleRemovingOneIngredient(ingredients){
+function handleRemoveOnMinuButtonClick(){
     $('.search-result-wrapper').on('click', '.remove-button', function(e){
-        removeItemFromGroceryList(ingredients[$(this).val()]);
+        const itemId = $(this).parent('li').find('div').attr('data-id');
+        removeItemFromGroceryList(itemId);
         console.log(STORE.groceryList);
         $(this).html('+');
         $(this).attr('class', 'add-ing-button');
+        
+        // if the page open is grocery page then just reload the page
+        if($('.search-result-wrapper').attr('data-page') === 'grocery')
+        {
+            console.log(`entered`);
+            displayGroceryListPage();
+        }
     })
 }
 
-function handleAddAllIngredientsbutton(ingredients){
+function handleAddAllIngredientsbutton(){
     // adds all ingredients to the grocery list
     $('.search-result-wrapper').on('click','.add-all-button',function(e){
-        ingredients.map(ingredient => addItemToGroceryList(ingredient));
+        $('.search-result-wrapper').find('.ing-name').each(function(index){
+            addItemToGroceryList({id: $(this).attr("data-id"), name: $(this).html()});
+        });
+        console.log(STORE.groceryList);
         $('.search-result-wrapper .add-ing-button').html('-');
         $('.search-result-wrapper .add-ing-button').attr('class', 'remove-button');
-        console.log(STORE.groceryList);
     });
 }
 
-function handleAddOneIngredient(ingredients){
+function handleAddOnPlusButton(){
     // adds only selected ingredient to the grocery list
     $('.search-result-wrapper').on('click', '.add-ing-button', function(e){
-        addItemToGroceryList(ingredients[$(this).val()]);
-        console.log(STORE.groceryList);
+        const itemElement = $(this).parent('li').find('div');
+        addItemToGroceryList({id: itemElement.attr("data-id"), name: itemElement.html()});
         $(this).html("-");
         $(this).attr('class','remove-button');
+        console.log(STORE.groceryList);
     });
 }
 
 function renderRecipePage(recipe){
     // renders the recipe page to the browser
     $('.search-result-wrapper').html("");
+    $('.search-result-wrapper').attr('data-page','recipe-page');
     $('.search-result-wrapper').append(`
         <div class="recipe-info-div">
             <h2 class="recipe-page-name">
@@ -465,20 +527,16 @@ function renderRecipePage(recipe){
             </div>
         </div>
     `);
-
-    handleAddAllIngredientsbutton(recipe.ingredientLines);
-    handleAddOneIngredient(recipe.ingredientLines);
-    handleRemovingOneIngredient(recipe.ingredientLines);
 }
 
 
-function handleViewRecipeButtonClick(responseJson){
+function handleViewRecipeButtonClick(){
 
     // handles the button click on the receipe thumbnails to take user the detailed info about the recipe
     $('.search-result-wrapper').on('click', '.recipe-button', function(e){
 
         let recipeIndex = $(this).val();
-        let recipe = responseJson.hits[recipeIndex].recipe;
+        let recipe = STORE.responseJson.hits[recipeIndex].recipe;
         console.log(recipe);
         renderRecipePage(recipe);
 
@@ -521,7 +579,7 @@ function displayResults(responseJson){
     
     // this function handles the functionality for displaying the search result to the user
     $('.search-result-wrapper').html("");
-
+    $('.search-result-wrapper').attr('data-page', 'search-result')
     let recipesFound = responseJson.hits.length;
 
     // if no recipes aer found display no result page
@@ -545,8 +603,8 @@ function displayResults(responseJson){
             // call back for the function to render search result
             renderSearchResult(recipe, i);
         }
-        // callback to the function for handling the button clicks on the recipe thumbnails
-        handleViewRecipeButtonClick(responseJson);
+        // storing the response result in the dataset
+        STORE.responseJson = responseJson;
     }
 }
 
@@ -695,18 +753,16 @@ function watchForm(){
                 styleForOtherPages();
             }   
 
-            // let fetchURL = getFetchURL();
+            let fetchURL = getFetchURL();
 
-            // fetch(fetchURL)
-            //     .then(response => response.json())
-            //     .then(responseJson => {
-                    // console.log(responseJson);
-                    displayResults(respJson);
-                    // displayResults(responseJson);
-                // })
-                // .catch(err => {
-                //     alert(`We have encountered an error: ${err}`);
-                // });
+            fetch(fetchURL)
+                .then(response => response.json())
+                .then(responseJson => {
+                    displayResults(responseJson);
+                })
+                .catch(err => {
+                    alert(`We have encountered an error: ${err}`);
+                });
 
         }else{
             filterMenuShowToggle();
@@ -789,6 +845,11 @@ function main(){
     handleFilterButtonClick();
     handleFilterMenuClicks();
     handleGroceryListClick();
+    handleViewRecipeButtonClick();
+    handleAddAllIngredientsbutton();
+    handleAddOnPlusButton();
+    handleRemoveOnMinuButtonClick();
+    handleAddingUserInputGroceryItem();
     watchForm();
 }
 

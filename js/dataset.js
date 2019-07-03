@@ -1,4 +1,5 @@
 const STORE = {
     groceryList: [],
-    previousPageState: ""
+    previousPageState: "",
+    responseJson : {},
 }
