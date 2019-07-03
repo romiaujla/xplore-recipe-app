@@ -526,3 +526,18 @@ p.img-source a{
     color: white;
     text-decoration: underline;
 }
+.update-wrapper {
+    flex: 0;
+    position: relative;
+}
+span.update-user {
+    display: none;
+    position: absolute;
+    top: 3px;
+    left: 04px;
+    width: max-content;
+    background: gray;
+    color: white;
+    padding: 3px 5px;
+    font-size: 0.7em;
+}

@@ -6,6 +6,9 @@ function getItemHTML(){
             <li class="items-list-item">
                 <div class="item-name">${item.name}</div>
                 <button type="button" class="remove-button" value="${item.id}">-</button>
+                <div class="update-wrapper">
+                    <span class="update-user"></span>
+                </div>
             </li>`;
     })
     return items.join('');
