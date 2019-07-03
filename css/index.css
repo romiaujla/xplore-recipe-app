@@ -19,10 +19,6 @@ input, div, header{
     margin: 0;
 }
 
-body{
-    /* background: lightgray; */
-}
-
 html, body{
     height: 100%;
 }
