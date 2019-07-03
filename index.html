@@ -29,71 +29,24 @@
                         <legend role="search recipe form"></legend>
                         <label for="search-recipe">
                             <div class="search-box">
-                                <input type="text" role="search textbox" name="search-recipe" id="search-recipe" class="search-textbox" placeholder="Search A Recipe" required>
+                                <input type="text" role="search textbox" name="search-recipe" id="search-recipe"
+                                    class="search-textbox" placeholder="Search A Recipe" required>
                             </div>
                         </label>
                         <div class="filter-grocery-wrapper">
                             <div class="filter-box">
                                 <button type="button" class="filter-button" role="filter button">Filter
-                                        <!-- Down Arrow Carrot -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                        width="15" height="15"
-                                        viewBox="0 0 26 26"
-                                        ><g id="surface1"><path style=" " d="M 6.414063 7.585938 L 3.585938 10.414063 L 13 19.828125 L 22.414063 10.414063 L 19.585938 7.585938 L 13 14.171875 Z "></path></g></svg>
+                                    <!-- Down Arrow Carrot -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15"
+                                        viewBox="0 0 26 26">
+                                        <g id="surface1">
+                                            <path
+                                                d="M 6.414063 7.585938 L 3.585938 10.414063 L 13 19.828125 L 22.414063 10.414063 L 19.585938 7.585938 L 13 14.171875 Z ">
+                                            </path>
+                                        </g>
+                                    </svg>
 
                                 </button>
-                                <div class="filter-drop-down-menu">
-                                    <div class="calorie-diet-wrapper">
-                                        <div class="calorie-wrapper">
-                                            <div class="calorie-filter" role="calorie filter section">
-                                                <h3 class="calorie-filter-header">
-                                                    Calories
-                                                </h3>
-                                                <div class="calorie-label-wrapper">
-                                                    <label for="min-calorie" class="min-calorie">
-                                                        <input type="number" name="min-calorie" id="min-calorie" class="min-calorie-textbox" min="0" role="minimum calorie textbox">
-                                                        <span class="min-calorie-span">Min</span>
-                                                    </label>
-                                                    <label for="max-calorie" class="max-calorie">
-                                                        <input type="number" name="max-calorie" id="max-calorie" class="max-calorie-textbox" min="0" role="maximum calorie textbox">
-                                                        <span class="max-calorie-span">Max</span>
-                                                    </label>
-                                                    <div class="cal-error">
-                                                        Min cannot be greater than Max
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                        </div>
-                                        <div class="diet-wrapper">
-                                            <div class="diet-filter" role="diet filter section">
-                                                <h3 class="diet-filter-header">
-                                                    Diet
-                                                </h3>
-                                                <label for="vegetarian"><input type="checkbox" name="vegetarian" id="vegetarian" role="vegetarian checkbox">Vegetarian</label>
-                                                <label for="balanced"><input type="checkbox" name="balanced" id="balanced" role="balanced checkbox">Balanced</label>
-                                                <label for="high-protein"><input type="checkbox" name="high-protein" id="high-protein" role="high-protein checkbox">High-Protein</label>
-                                                <label for="low-carbs"><input type="checkbox" name="low-carbs" id="low-carbs" role="low-carbs checkbox">Low-Carbs</label>
-                                                <label for="low-fat"><input type="checkbox" name="low-fat" id="low-fat" role="low-fat checkbox">Low-Fat</label>
-                                                <label for="vegan"><input type="checkbox" name="vegan" id="vegan" role="vegan checkbox">Vegan</label>
-                                                <label for="sugar-conscious"><input type="checkbox" name="sugar-conscious" id="sugar-conscious" role="sugar conscious checkbox">Sugar Conscious</label>
-                                                <label for="alcohol-free"><input type="checkbox" name="alcohol-free" id="alcohol-free" role=" alcohol free checkbox">Alcohol Free</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="allergies-filter" role="allergies filter section">
-                                        <h3 class="allergies-filter-header">
-                                            Allergies
-                                        </h3>
-                                        <div class="allergies-label-wrapper">
-                                            <label for="peanut-free"><input type="checkbox" name="peanut-free" id="peanut-free" role="peanut free checkbox">Peanuts</label>
-                                            <label for="tree-nuts-free"><input type="checkbox" name="tree-nuts-free" id="tree-nuts-free" role="tree nuts free checkbox">Tree-Nuts</label>
-                                        </div>
-                                    </div>
-                                    <div class="filter-buttons-div">
-                                        <button type="reset" class="reset-button app-button" role="reset filters button">Reset</button>
-                                        <button type="button" class="done-button app-button" role="set filters button">Done</button>
-                                    </div>
-                                </div>
                             </div>
                             <div class="grocery-list-box">
                                 <button type="button" class="grocery-list-button">
@@ -104,9 +57,83 @@
                                 <button type="submit" class="submit-button" role="find button">Find Recipes</button>
                             </div>
                         </div>
-                    <div class="app-info" role="app description">
-                        Browse through 1.7+ million nutritionally analyzed recipes, detailed macro and micronutrient data. Filter by calories, diets and allergens.
-                    </div>
+                        <div class="filter-drop-down-menu-wrapper">
+
+                            <div class="filter-drop-down-menu">
+                                <div class="calorie-diet-wrapper">
+                                    <div class="calorie-wrapper">
+                                        <div class="calorie-filter" role="calorie filter section">
+                                            <h3 class="calorie-filter-header">
+                                                Calories
+                                            </h3>
+                                            <div class="calorie-label-wrapper">
+                                                <label for="min-calorie" class="min-calorie">
+                                                    <input type="number" name="min-calorie" id="min-calorie"
+                                                        class="min-calorie-textbox" min="0"
+                                                        role="minimum calorie textbox">
+                                                    <span class="min-calorie-span">Min</span>
+                                                </label>
+                                                <label for="max-calorie" class="max-calorie">
+                                                    <input type="number" name="max-calorie" id="max-calorie"
+                                                        class="max-calorie-textbox" min="0"
+                                                        role="maximum calorie textbox">
+                                                    <span class="max-calorie-span">Max</span>
+                                                </label>
+                                                <div class="cal-error">
+                                                    Min cannot be greater than Max
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="diet-wrapper">
+                                        <div class="diet-filter" role="diet filter section">
+                                            <h3 class="diet-filter-header">
+                                                Diet
+                                            </h3>
+                                            <label for="vegetarian" class="checkbox"><input type="checkbox" name="vegetarian"
+                                                    id="vegetarian" role="vegetarian checkbox">Vegetarian</label>
+                                            <label for="balanced" class="checkbox"><input type="checkbox" name="balanced" id="balanced"
+                                                    role="balanced checkbox">Balanced</label>
+                                            <label for="high-protein" class="checkbox"><input type="checkbox" name="high-protein"
+                                                    id="high-protein" role="high-protein checkbox">High-Protein</label>
+                                            <label for="low-carbs" class="checkbox"><input type="checkbox" name="low-carbs"
+                                                    id="low-carbs" role="low-carbs checkbox">Low-Carbs</label>
+                                            <label for="low-fat" class="checkbox"><input type="checkbox" name="low-fat" id="low-fat"
+                                                    role="low-fat checkbox">Low-Fat</label>
+                                            <label for="vegan" class="checkbox"><input type="checkbox" name="vegan" id="vegan"
+                                                    role="vegan checkbox">Vegan</label>
+                                            <label for="sugar-conscious" class="checkbox"><input type="checkbox" name="sugar-conscious"
+                                                    id="sugar-conscious" role="sugar conscious checkbox">Sugar
+                                                Conscious</label>
+                                            <label for="alcohol-free" class="checkbox"><input type="checkbox" name="alcohol-free"
+                                                    id="alcohol-free" role=" alcohol free checkbox">Alcohol Free</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="allergies-filter" role="allergies filter section">
+                                    <h3 class="allergies-filter-header">
+                                        Allergies
+                                    </h3>
+                                    <div class="allergies-label-wrapper">
+                                        <label for="peanut-free" class="checkbox"><input type="checkbox" name="peanut-free"
+                                                id="peanut-free" role="peanut free checkbox">Peanuts</label>
+                                        <label for="tree-nuts-free" class="checkbox"><input type="checkbox" name="tree-nuts-free"
+                                                id="tree-nuts-free" role="tree nuts free checkbox">Tree-Nuts</label>
+                                    </div>
+                                </div>
+                                <div class="filter-buttons-div">
+                                    <button type="reset" class="reset-button app-button"
+                                        role="reset filters button">Reset</button>
+                                    <button type="button" class="done-button app-button"
+                                        role="set filters button">Done</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="app-info" role="app description">
+                            Browse through 1.7+ million nutritionally analyzed recipes, detailed macro and micronutrient
+                            data. Filter by calories, diets and allergens.
+                        </div>
                     </fieldset>
                 </form>
             </div>
@@ -114,7 +141,7 @@
 
         <section class="search-result-section" role="search result section">
             <div class="search-result-wrapper">
-               
+
             </div>
         </section>
 
@@ -123,9 +150,8 @@
     <!-- Javascript Files -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
     <script src="js/dataset.js"></script>
     <script src="js/sampleJSON.js"></script>
     <script src="js/script.js"></script>

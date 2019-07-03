@@ -1,3 +1,9 @@
+function handleStylingCheckBoxes(){
+    let i = 0;
+    $('.checkbox input').on('click',function(e){
+        $(this).parent('.checkbox').toggleClass('checked');
+    })
+}
 
 function getItemHTML(){
     // return the list item HTML for all items in the grocerylist
@@ -864,6 +870,7 @@ function main(){
     handleAddOnPlusButton();
     handleRemoveOnMinuButtonClick();
     handleAddingUserInputGroceryItem();
+    handleStylingCheckBoxes();
     watchForm();
 }
 
