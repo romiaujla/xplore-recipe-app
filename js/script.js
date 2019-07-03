@@ -20,7 +20,7 @@ function getNutritionalFactsHTML(recipe){
     nutFactsHTML = `    
         <div class="facts-header-wrapper">
             <h2 class="facts-header bold">
-                Nutrional Facts
+                Nutritional Facts
             </h2>
             <p>Serving Size ${recipe.yield} </p>
             <p>Total Calories ${Math.floor(recipe.calories)} kcal</p>
@@ -532,15 +532,15 @@ function watchForm(){
 
             // let fetchURL = getFetchURL();
 
-            // fetch(fetchURL)
-                // .then(response => response.json())
-                // .then(responseJson => {
-                    console.log(respJson);
-                    displayResults(respJson);
-                // })
-                // .catch(err => {
-                    // alert(`We have encountered an error: ${err}`);
-                // });
+            fetch(fetchURL)
+                .then(response => response.json())
+                .then(responseJson => {
+                    console.log(responseJson);
+                    displayResults(responseJson);
+                })
+                .catch(err => {
+                    alert(`We have encountered an error: ${err}`);
+                });
 
         }else{
             filterMenuShowToggle();
