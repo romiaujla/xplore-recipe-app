@@ -1,3 +1,5 @@
+
+
 function getNutritionalFactsHTML(recipe){
     // returns the nutritional facts table html
     let nutFactsHTML = "";
@@ -130,7 +132,7 @@ function getNutritionalFactsHTML(recipe){
                     ${Math.floor((calcium/1100)*100)}%   
                 </p>
             </div>
-            <div class="facts-flex brd-btm">
+            <div class="facts-flex">
                 <p>
                     Iron ${iron}${nutFacts.CA.unit}
                 </p>
@@ -272,6 +274,14 @@ function getIngredientsHTML(recipe){
     return ingredientsHTML;
 }
 
+function handleAddAllIngredientsbutton(ingredients){
+    // adds all ingredients to the grocery list
+}
+
+function handleAddOneIngredient(ingredients){
+    // adds only selected ingredient to the grocery list
+}
+
 function renderRecipePage(recipe){
     // renders the recipe page to the browser
     $('.search-result-wrapper').html("");
@@ -309,6 +319,9 @@ function renderRecipePage(recipe){
             </div>
         </div>
     `);
+
+    handleAddAllIngredientsbutton(recipe.ingredientLines);
+    handleAddOneIngredient(recipe.ingredientLines);
 }
 
 
@@ -530,7 +543,7 @@ function watchForm(){
                 styleForRecipePage();
             }   
 
-            // let fetchURL = getFetchURL();
+            let fetchURL = getFetchURL();
 
             fetch(fetchURL)
                 .then(response => response.json())

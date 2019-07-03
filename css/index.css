@@ -465,6 +465,7 @@ button.add-ing-button {
 }
 .facts-sub{
     font-size: 0.8em;
+    border-top: 10px solid black;
 }
 .sub-tab{
     margin-left: 5px;
