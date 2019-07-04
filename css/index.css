@@ -78,6 +78,9 @@ body button:disabled{
     margin-top: 10px;
     width: 100%;
     border: none;
+    color: #0F2591;
+    font-weight: 800;
+    font-size:.9em;
 }
 
 .diet-filter{
@@ -218,7 +221,8 @@ body button:disabled{
     font-weight: 800;
     text-transform: uppercase;
 }
-.add-item-submit-button{
+.add-item-submit-button,
+.app-button{
     border: none;
     color: white;
     font-size: .9em;
@@ -236,6 +240,8 @@ body button:disabled{
 .submit-button:focus,
 .add-item-submit-button:hover,
 .add-item-submit-button:focus,
+.app-button:hover,
+.app-button:focus,
 .clicked{
     background: #0087f5;
 }
@@ -247,19 +253,9 @@ button.grocery-list-button {
     position: relative;
     top: 3px;
 }
-.app-button{
-    border: none;
-    color: white;
-    padding: 8px 20px;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-}
 .filter-drop-down-menu-wrapper {
     position: absolute;
-    width: 100%;
+    margin-right: 10px;
     max-width: 459px;
 }
 .filter-drop-down-menu {
@@ -269,10 +265,6 @@ button.grocery-list-button {
     border: 5px solid #0087f5;
     background: rgb(225, 221, 226);
 }
-.filter-drop-down-menu * {
-    color: #0f2591;
-    font-weight: 600;
-}
 .cal-error{
     display: none;
     color: crimson;
@@ -281,7 +273,9 @@ button.grocery-list-button {
     font-size: 0.7em;
     padding-top: 10px;
 }
-
+.checkbox{
+    font-weight: 600;
+}
 /* Search Result styles */
 .recipe-button{
     border: none;
@@ -454,12 +448,17 @@ button.grocery-page-remove-button{
     font-weight: 800;
 }
 .nutritional-facts-chart-wrapper{
+    background: white;
     border: 1px solid black;
     margin: 10px;
     padding: 0.5rem;
     font-family: sans-serif;
     line-height: 1.4;
     font-size: small;
+}
+.nutritional-facts-chart-wrapper *{
+    color: black;
+    font-family: sans-serif;
 }
 .facts-header{
     font-size: 2rem;
