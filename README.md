@@ -32,7 +32,7 @@ It allows a user to browse through recipes using the Edamam API, which has a dat
 
 ## Screenshots
 Landing Page
-![landing page](img/screen 1.png)
+![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%201.png)
 
 ## Tech Used
 - Favicon created in Adobe XD
