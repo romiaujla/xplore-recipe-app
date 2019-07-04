@@ -47,9 +47,9 @@ function groceryListItemHTML(){
         // when there are no items in the list
         return `
         <div class="no-items-wrapper">
-            <h4 class="no-item-header">
+            <span class="no-item-header">
                 Your Grocery List Is Empty
-            </h4>
+            </span>
             <img src="img/empty-cart.jpeg" alt="empty shopping cart" class="empty-item-image">
             <p class="img-source">Photo by <a href="https://unsplash.com/@thethinblackframe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">David Clarke</a> on <a href="https://unsplash.com/search/photos/shopping-cart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></p>
         </div>

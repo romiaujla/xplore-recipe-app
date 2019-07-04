@@ -595,7 +595,6 @@ img.empty-item-image {
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     border: 5px solid white;
 }
-h4.no-item-header,
 h4.items-header {
     text-transform: uppercase;
     font-weight: 800;
@@ -605,14 +604,18 @@ h4.items-header {
 h4.items-header{
     margin-bottom: 20px;
 }
-h4.no-item-header{
+span.no-item-header{
     position: absolute;
     left: 0px;
-    top: 115px;
+    top: 33.33%;
+    height: 20%;
     width: 100%;
-    padding: 30px;
-    border-top: 2px solid #00447f;
+    padding-top: 5.2%;
     background: rgba(255,255,255,0.9);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 800;
 }
 p.img-source {
     position: relative;
