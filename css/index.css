@@ -158,7 +158,7 @@ body button:disabled{
 
 /* Landing Page */
 .landing-page{
-    height: 85%;
+    height: 100%;
 }
 .landing-page .logo{
     font-size: 3.5em;
