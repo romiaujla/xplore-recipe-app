@@ -421,18 +421,22 @@ li.ing-list-item {
     align-self: center;
     flex: 6;
     padding-right: 5px;
+    text-transform: capitalize;
+    font-weight: 600;
 }
 button.remove-button,
 button.add-ing-button,
 button.grocery-page-remove-button{
-    padding: 2px 7px;
+    padding: 2px 8px;
     text-transform: uppercase;
-    font-size: 1.1em;
-    font-weight: 600;
-    background: darkorange;
+    font-size: 1.3em;
+    font-weight: 800;
+    background: #0065b8;
     align-self: center;
     cursor: pointer;
     font-family: 'Courier New';
+    color: white;
+    border: none;
 }
 .instruction-header{
     padding: 10px;
@@ -530,12 +534,24 @@ button.grocery-page-remove-button{
 .grocery-list-page{
     margin: 0px 10px;
 }
+.grocery-list-page .items-list-item{
+    padding: 10px 20px;
+}
+.grocery-list-page .items-list-item:nth-of-type(odd){
+    background: snow;
+}
+.grocery-list-page .items-list-item:nth-of-type(even){
+    background: #dcba006e;
+}
+.grocery-list-page .items-list{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+}
 .add-item-form{
     padding: 40px 0px 20px 0px;
 }
 .add-item-form legend{
     padding: 10px;
-
+    font-weight: 600;
 }
 .add-item-form-wrapper{
     display: flex;
@@ -544,13 +560,26 @@ button.grocery-page-remove-button{
 }
 img.empty-item-image {
     width: 100%;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border: 5px solid white;
 }
 h4.no-item-header,
 h4.items-header {
-    border-top: 2px solid black;
-    padding: 30px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 2px solid #00447f;
+}
+h4.items-header{
+    margin-bottom: 20px;
+}
+h4.no-item-header{
+    position: relative;
+    left: 0px;
+    top: 194px;
+    padding: 30px;
+    border-top: 2px solid #00447f;
+    background: rgba(255,255,255,0.9);
 }
 p.img-source {
     position: relative;
