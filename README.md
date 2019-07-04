@@ -31,27 +31,32 @@ It allows a user to browse through recipes using the Edamam API, which has a dat
 - As a disabled user, I would like the website to aria compatible so a screen reader can pick up what the user is interacting with and read it back to the user. 
 
 ## Screenshots
-Landing Page
+
+####Landing Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%201.png)
 
 
-Landing Page with avilable filters
+
+####Landing Page with avilable filters
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%202.png)
 
 
-Search Result Page
+
+####Search Result Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%203.png)
 
 
-Recipe Detailed Information Page
+
+####Recipe Detailed Information Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%204.png)
 
 
-Grocery List Page
+
+####Grocery List Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%205.png)
 
@@ -63,7 +68,7 @@ Grocery List Page
 ## Info for Portfolio
 - Building this Asynchronous web app helped me obtain the knowledge of working with WEB API and JSON. Along with this, it helped me strengthen my knowledge of HTML5, CSS3, Javascript, and jQuery which handle the frontend of this application. 
 
-## Some future features that may can be added
+## Some features for the future
 - User logins, which can then lead to building more features mentioned below
     - Users can add or reply to a comment on the recipes
     - Users can rate the recipe.
