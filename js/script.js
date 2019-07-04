@@ -572,31 +572,31 @@ function handleViewRecipeButtonClick(){
 function renderSearchResult(recipe, i){
     // renders the search result to the browser
     $('.search-result-wrapper').append(`
-            
-        <button type="button" class="recipe-button" value="${i}">
-            <div class="recipe">
-                <div class="recipe-info-container">
-                    <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
-                    <h2 class="recipe-name">
-                        ${recipe.label}
-                    </h2>   
-                    <div class="recipe-info-wrapper">
-                        <div class="recipe-cal">
-                            Calories per serving : ${Math.floor(recipe.calories/recipe.yield)}
-                        </div>
-                        <div class="servings">
-                            Servings : ${recipe.yield}
+        <div class="recipe-button-wrapper">        
+            <button type="button" class="recipe-button" value="${i}">
+                <div class="recipe">
+                    <div class="recipe-info-container">
+                        <img src="${recipe.image}" alt="Image of a ${recipe.label}" class="recipe-image">
+                        <h2 class="recipe-name">
+                            ${recipe.label}
+                        </h2>   
+                        <div class="recipe-info-wrapper">
+                            <div class="recipe-cal">
+                                Calories per serving : ${Math.floor(recipe.calories/recipe.yield)}
+                            </div>
+                            <div class="servings">
+                                Servings : ${recipe.yield}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="view-recipe-wrapper">
-                <span class="view-recipe">
-                    View Details
-                </span>
-            </div>
-        </button>
-
+                <div class="view-recipe-wrapper">
+                    <span class="view-recipe">
+                        View Details
+                    </span>
+                </div>
+            </button>
+        </div>
     `);
 }
 
@@ -842,7 +842,6 @@ function filterMenuShowToggle(){
     if($('.filter-drop-down-menu').css('display') === 'none'){
         $('.filter-drop-down-menu').slideDown(150);
         handleCalorieError();
-        $('.min-calorie-textbox').focus();
     }else{
         $('.filter-drop-down-menu').slideUp(150);
     }
@@ -864,7 +863,7 @@ function handleFilterMenuClicks(){
 
     $('.done-button').on('click', function(e){
         filterMenuShowToggle();
-        $('.filter-button').focus();
+        $('.search-button').focus();
     })
 }
 

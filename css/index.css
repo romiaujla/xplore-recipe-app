@@ -39,7 +39,9 @@ body button:disabled{
 .app-info{
     padding: 30px;
     font-size: .9em;
-    line-height: 1.3em;
+    line-height: 1.5em;
+    letter-spacing: .04em;
+    text-align: center;
 }
 .submit-button-div{
     text-align: center;
@@ -87,7 +89,6 @@ body button:disabled{
     padding: 10px 30px 20px 30px;
     display: flex;
     flex-direction: row;
-    flex-shrink: 0;
     flex-wrap: wrap;
 }
 .diet-filter-header{
@@ -104,7 +105,6 @@ body button:disabled{
     background: #0065b8;
     color: white;
     cursor: pointer;
-    flex-shrink: 0;
     flex-grow: 1;
 }
 .diet-filter label:hover, 
@@ -167,6 +167,7 @@ body button:disabled{
 .header-section{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .logo {
     font-family: 'Indie Flower', cursive;
@@ -245,8 +246,15 @@ body button:disabled{
 .add-item-submit-button:focus,
 .app-button:hover,
 .app-button:focus,
-.clicked{
+.clicked,
+button.remove-button:hover,
+button.add-ing-button:hover,
+button.grocery-page-remove-button:hover,
+button.remove-button:focus,
+button.add-ing-button:focus,
+button.grocery-page-remove-button:focus{
     background: #0087f5;
+    transition: .2s;
 }
 button.grocery-list-button {
     margin: 0px 5px;
@@ -260,6 +268,7 @@ button.grocery-list-button {
     position: absolute;
     margin-right: 10px;
     max-width: 459px;
+    z-index: 2;
 }
 .filter-drop-down-menu {
     display: none;
@@ -280,13 +289,17 @@ button.grocery-list-button {
     font-weight: 600;
 }
 /* Search Result styles */
+.recipe-button-wrapper {
+    position: relative;
+    padding: 20px 10px;
+    z-index: 1;
+}
 .recipe-button{
     border: 5px solid white;
-    position: relative;
     background: inherit;
-    width: 95%;
+    position: relative;
+    width: 100%;
     cursor: pointer;
-    margin: 40px 10px;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 }
 .recipe-button:hover .view-recipe-wrapper,
@@ -340,7 +353,7 @@ button.grocery-list-button {
     height: 20%;
 }
 .view-recipe{
-    font-size: 2.3em;
+    font-size: 5vw;
     color: white;
     font-weight: 800;
     letter-spacing: .05em;
@@ -627,4 +640,46 @@ span.update-user {
     color: white;
     padding: 3px 5px;
     font-size: 0.7em;
+}
+@media only screen and (min-width:480px){
+    .container{
+        max-width: 100%;
+    }
+    .search-form{
+        margin: auto;
+        max-width: 600px;
+    }
+    .filter-drop-down-menu-wrapper{
+        max-width: 580px;
+    }
+    .search-result-wrapper[data-page="grocery"],
+    .search-result-wrapper[data-page="search-result"],
+    .search-result-wrapper[data-page="recipe-page"]{
+        max-width: 500px;
+        margin: auto;
+        padding: 0px 10px;
+    }
+}
+@media only screen and (min-width:660px){
+    .search-result-wrapper[data-page="search-result"]{
+        max-width: 1000px;
+        margin: auto;
+        padding: 0px 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .recipe-button-wrapper{
+        max-width: 300px;
+        margin: auto;
+    }
+    .view-recipe-wrapper{
+        padding-top: 8%;
+    }
+    .view-recipe{
+        font-size: 1.3em;
+    }
+    .recipe-info-wrapper{
+        font-size: 1em;
+    }
 }
