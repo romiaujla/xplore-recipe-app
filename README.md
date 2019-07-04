@@ -19,8 +19,8 @@
 		- Sugar Conscious
 		- Alcohol-Free
 	- Filter by selecting allergens
-- Peanuts free 
-- Tree-nuts free
+        - Peanuts free 
+        - Tree-nuts free
 - Once the recipe is searched, the user can then add ingredients to their own grocery list
 - User can remove items from the grocery list
 - User can view detailed nutritional information about the recipe
