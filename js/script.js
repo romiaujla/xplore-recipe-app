@@ -1,7 +1,18 @@
 function handleStylingCheckBoxes(){
-    let i = 0;
     $('.checkbox input').on('click',function(e){
-        $(this).parent('.checkbox').toggleClass('checked');
+        if($(this).prop('checked') === true){
+            $(this).parent('.checkbox').addClass('checked');
+        }else{
+            $(this).parent('.checkbox').removeClass('checked');
+        }
+    })
+    $('.checkbox input').on('focus',function(e){
+        $(this).parent('.checkbox').addClass('checked');
+    })
+    $('.checkbox input').on('blur',function(e){
+        if($(this).prop('checked') === false){
+            $(this).parent('.checkbox').removeClass('checked');
+        }
     })
 }
 
@@ -848,11 +859,12 @@ function handleFilterMenuClicks(){
         // blur the min textbox so the errors can hide and if any buttons are disabled they will turn active
         $('.min-calorie-textbox').blur();
         $('.min-calorie-textbox').focus();
-
+        $('.checkbox').removeClass('checked');
     });
 
     $('.done-button').on('click', function(e){
         filterMenuShowToggle();
+        $('.filter-button').focus();
     })
 }
 

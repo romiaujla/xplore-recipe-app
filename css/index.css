@@ -114,6 +114,9 @@ body button:disabled{
 .checked{
     background: #0087f5 !important;
 }
+.checkbox input:focus{
+    background: #0087f5 !important;
+}
 .allergies-filter label{
     flex-shrink: 0;
 }
