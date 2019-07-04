@@ -518,38 +518,40 @@ function renderRecipePage(recipe){
     $('.search-result-wrapper').html("");
     $('.search-result-wrapper').attr('data-page','recipe-page');
     $('.search-result-wrapper').append(`
-        <div class="recipe-info-div">
-            <h2 class="recipe-page-name">
-                ${recipe.label}
-            </h2>
-            <img src="${recipe.image}" alt="picture of a ${recipe.label}" class="recipe-page-image">
-            <div class="ingredients">
-                <div class="ing-heading-wrapper">
-                    <h3 class="ing-header">
-                        Ingredients: 
+        <h2 class="recipe-page-name">
+            ${recipe.label}
+        </h2>
+        <div class="recipe-info-div-wrapper">
+            <div class="recipe-info-div">
+                <img src="${recipe.image}" alt="picture of a ${recipe.label}" class="recipe-page-image">
+                <div class="ingredients">
+                    <div class="ing-heading-wrapper">
+                        <h3 class="ing-header">
+                            Ingredients: 
+                        </h3>
+                        <button type="button" class="add-all-button app-button">
+                            Add All
+                        </button>
+                    </div>
+                    <div class="ing-list-wrapper">
+                        <ul class="ing-list">
+                            ${getIngredientsHTML(recipe)}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-info-div recipe-instructions-facts">
+                <div class="instruction-header-wrapper">
+                    <h3 class="instruction-header">
+                        Instructions:
                     </h3>
-                    <button type="button" class="add-all-button app-button">
-                        Add All
-                    </button>
+                    <p class="ins-link-wrapper">
+                        <a href="${recipe.url}" target="_blank" class="source app-button">Source: ${recipe.source}</a>
+                    </p>
                 </div>
-                <div class="ing-list-wrapper">
-                    <ul class="ing-list">
-                        ${getIngredientsHTML(recipe)}
-                    </ul>
+                <div class="nutritional-facts-chart-wrapper">
+                    ${getFactsHTML(recipe)}
                 </div>
-            </div>
-        </div>
-        <div class="recipe-info-div recipe-instructions-facts">
-            <div class="instruction-header-wrapper">
-                <h3 class="instruction-header">
-                    Instructions:
-                </h3>
-                <p class="ins-link-wrapper">
-                    <a href="${recipe.url}" target="_blank" class="source app-button">Source: ${recipe.source}</a>
-                </p>
-            </div>
-            <div class="nutritional-facts-chart-wrapper">
-                ${getFactsHTML(recipe)}
             </div>
         </div>
     `);

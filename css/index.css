@@ -676,10 +676,36 @@ span.update-user {
     .view-recipe-wrapper{
         padding-top: 8%;
     }
+    .recipe-instructions-facts{
+        margin: 0;
+    }
     .view-recipe{
         font-size: 1.3em;
     }
     .recipe-info-wrapper{
         font-size: 1em;
+    }
+    .search-result-wrapper[data-page="recipe-page"]
+    {
+        max-width: 1000px;
+        padding-bottom: 30px;
+    }
+    .recipe-info-div-wrapper{
+        display: flex;
+        flex-basis: 0;
+        justify-content: center;
+        border-top: 2px solid #0F2591;
+        border-bottom: 2px solid #0F2591;
+    }
+    .recipe-info-div-wrapper .recipe-info-div{
+        padding: 1.5%;
+        flex: 1;
+    }
+    .recipe-page-name{
+        text-align: center;
+        padding-bottom:10px;
+    }
+    .nutritional-facts-chart-wrapper{
+        margin-bottom: 0px;
     }
 }
