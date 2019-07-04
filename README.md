@@ -32,31 +32,31 @@ It allows a user to browse through recipes using the Edamam API, which has a dat
 
 ## Screenshots
 
-####Landing Page
+#### Landing Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%201.png)
 
 
 
-####Landing Page with avilable filters
+#### Landing Page with avilable filters
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%202.png)
 
 
 
-####Search Result Page
+#### Search Result Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%203.png)
 
 
 
-####Recipe Detailed Information Page
+#### Recipe Detailed Information Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%204.png)
 
 
 
-####Grocery List Page
+#### Grocery List Page
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%205.png)
 
