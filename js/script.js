@@ -24,6 +24,7 @@ function groceryListItemHTML(){
     // return the HTML for rendering the grocery list to the browser
 
     if(STORE.groceryList.length > 0){
+        
         // when there are items in the list
         return `
             <h4 class="items-header">
@@ -34,11 +35,13 @@ function groceryListItemHTML(){
     }else{
         // when there are no items in the list
         return `
+        <div class="no-items-wrapper">
             <h4 class="no-item-header">
                 Your Grocery List Is Empty
             </h4>
             <img src="img/empty-cart.jpeg" alt="empty shopping cart" class="empty-item-image">
             <p class="img-source">Photo by <a href="https://unsplash.com/@thethinblackframe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">David Clarke</a> on <a href="https://unsplash.com/search/photos/shopping-cart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></p>
+        </div>
         `;
         
     }
@@ -514,7 +517,7 @@ function renderRecipePage(recipe){
                     <h3 class="ing-header">
                         Ingredients: 
                     </h3>
-                    <button type="button" class="add-all-button">
+                    <button type="button" class="add-all-button app-button">
                         Add All
                     </button>
                 </div>
@@ -525,13 +528,15 @@ function renderRecipePage(recipe){
                 </div>
             </div>
         </div>
-        <div class="recipe-info-div">
-            <h3 class="instruction-header">
-                Instructions:
-            </h3>
-            <p class="ins-link-wrapper">
-                <a href="${recipe.url}" target="_blank">Source: ${recipe.source}</a>
-            </p>
+        <div class="recipe-info-div recipe-instructions-facts">
+            <div class="instruction-header-wrapper">
+                <h3 class="instruction-header">
+                    Instructions:
+                </h3>
+                <p class="ins-link-wrapper">
+                    <a href="${recipe.url}" target="_blank" class="source app-button">Source: ${recipe.source}</a>
+                </p>
+            </div>
             <div class="nutritional-facts-chart-wrapper">
                 ${getFactsHTML(recipe)}
             </div>

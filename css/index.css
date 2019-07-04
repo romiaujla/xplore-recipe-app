@@ -15,7 +15,7 @@
 
 body, p, h1, h2, h3, h4, h5, h6,
 ul, li, a, button, form, fieldset, legend,
-input, div, header{
+input, div, header, img{
     padding: 0;
     margin: 0;
 }
@@ -278,21 +278,18 @@ button.grocery-list-button {
 }
 /* Search Result styles */
 .recipe-button{
-    border: none;
+    border: 5px solid white;
     position: relative;
     background: inherit;
     width: 95%;
     cursor: pointer;
     margin: 40px 10px;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 }
 .recipe-button:hover .view-recipe-wrapper,
 .recipe-button:focus .view-recipe-wrapper
 {
     opacity: 1;
-}
-.recipe-button:hover .recipe,
-.recipe-button:focus .recipe{
-    opacity: 0.8;
 }
 .recipe{
     transition: .5s ease;
@@ -301,7 +298,6 @@ button.grocery-list-button {
 }
 .recipe img{
     width: 100%;
-    border: 2px solid black;
 }
 .recipe-info-container{
     position: relative;
@@ -316,33 +312,35 @@ button.grocery-list-button {
     background: rgba(255,255,255,.7);
     text-transform: uppercase;
     font-size: 1.5em;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    border: 2px solid black;
-    border-bottom: none;
+    font-weight: 800;
+    letter-spacing: 0.1em;
 }
 .recipe-info-wrapper{
     display: flex;
     justify-content: space-between;
     padding: 10px;
     font-size: 1.3em;
-    border: 2px solid;
     background: #f2f2f2;
+    margin-top: -5px;
 }
 .view-recipe-wrapper{
     transition: .5s ease;
     text-align: center;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
-    top: 0%;
+    top: 40%;
+    opacity: 0;
     width: 100%;
     background: rgba(23,23,23,.5);
+    text-transform: uppercase;
+    padding-top: 7%;
+    height: 20%;
+}
+.view-recipe{
+    font-size: 2.3em;
     color: white;
     font-weight: 800;
-    font-size: 2.3em;
-    text-transform: uppercase;
-    padding-top: 50%;
-    height: 100%;
+    letter-spacing: .05em;
 }
 .fetching-info{
     min-height: 400px;
@@ -369,13 +367,13 @@ button.grocery-list-button {
 
 /* Styling for Recipe Page*/
 .recipe-page-name{
-    padding: 10px;
-    font-size: 1.5em;
+    /* padding: 10px; */
+    font-size: 1.3em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: .1em;
-    border-bottom: 2px solid;
-    margin: 10px auto;
+    /* border-bottom: 2px solid; */
+    margin: 70px auto 10px auto;
 }
 .recipe-page-image{
     width: 100%;
@@ -383,33 +381,37 @@ button.grocery-list-button {
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     border-color: rgba(223,225,229,0);
     background: white;
-    border-radius: 10px;
 }
-.ingredients{
-    padding: 20px 8px;
+.ingredients,
+.recipe-instructions-facts{
+    margin-top: 16px;
+    /* padding: 0px 10px; */
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    /* border-color: rgba(223,225,229,0); */
+    border: 5px solid white;
+    /* background: #dcba006e; */
+}
+.recipe-instructions-facts{
+    margin-top: 20px;
 }
 .ing-heading-wrapper{
     display: flex;
+    margin: 0px 10px;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px 10px 20px 10px;
     border-bottom: 2px solid;
     align-items:center;
 }
-.add-all-button{
-    border: none;
-    padding: 8px 25px;
-    cursor: pointer;
-    background: darkorange;
-    text-transform: uppercase;
-    font-weight: 600;
-}
 .ing-list-wrapper{
-    padding: 20px 10px;
+    padding: 20px 0px;
 }
 li.ing-list-item {
     display: flex;
-    padding: 10px 0px;
+    padding: 10px 20px;
     justify-content: space-between;
+}
+li.ing-list-item:nth-of-type(odd){
+    background: white;
 }
 .items-list-item{
     display: flex;
@@ -423,6 +425,7 @@ li.ing-list-item {
     padding-right: 5px;
     text-transform: capitalize;
     font-weight: 600;
+    font-size: .9em;
 }
 button.remove-button,
 button.add-ing-button,
@@ -439,13 +442,19 @@ button.grocery-page-remove-button{
     border: none;
 }
 .instruction-header{
-    padding: 10px;
-    border-bottom: 2px solid black;
+    margin: 0px 10px;
+    padding: 20px 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
 }
 .ins-link-wrapper{
     padding: 10px;
     text-decoration: underline;
     margin-bottom: 30px;
+}
+.instruction-header-wrapper{
+    display: flex;
 }
 /* Nutritional Facts Table */
 .bold, .bold *{
@@ -454,7 +463,7 @@ button.grocery-page-remove-button{
 .nutritional-facts-chart-wrapper{
     background: white;
     border: 1px solid black;
-    margin: 10px;
+    margin: 0px 10px;
     padding: 0.5rem;
     font-family: sans-serif;
     line-height: 1.4;
@@ -558,6 +567,10 @@ button.grocery-page-remove-button{
     flex-direction: column;
     align-items: flex-end;
 }
+.no-items-wrapper {
+    position: relative;
+    z-index: -1;
+}
 img.empty-item-image {
     width: 100%;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
@@ -574,9 +587,10 @@ h4.items-header{
     margin-bottom: 20px;
 }
 h4.no-item-header{
-    position: relative;
+    position: absolute;
     left: 0px;
-    top: 194px;
+    top: 115px;
+    width: 100%;
     padding: 30px;
     border-top: 2px solid #00447f;
     background: rgba(255,255,255,0.9);
@@ -585,7 +599,7 @@ p.img-source {
     position: relative;
     font-size: .6em;
     text-align: right;
-    top: -30px;
+    top: -40px;
     color: white;
     padding: 10px;
 }
