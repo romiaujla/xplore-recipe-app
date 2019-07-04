@@ -663,6 +663,9 @@ span.update-user {
     }
 }
 @media only screen and (min-width:660px){
+    .landing-page .filter-drop-down-menu-wrapper{
+        max-width: 580px;
+    }
     .recipe-page .wrapper{
         display: flex;
         max-width: 1000px;
@@ -732,8 +735,7 @@ span.update-user {
     .nutritional-facts-chart-wrapper{
         margin-bottom: 0px;
     }
-    .filter-drop-down-menu-wrapper {
-        /* width: 100%; */
+    .recipe-page .filter-drop-down-menu-wrapper {
         max-width: 479px;
     }
 }
