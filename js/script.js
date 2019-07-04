@@ -39,7 +39,7 @@ function groceryListItemHTML(){
         // when there are items in the list
         return `
             <h4 class="items-header">
-                Items:
+                Grocery List
             </h4>
             <ul class="items-list">${getItemHTML()}</ul>
         `;
