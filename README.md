@@ -44,3 +44,6 @@
     - Users can rate the recipe.
     - Users can share recipes on social media.
     - Users can bookmark recipes
+- Print/Email the Recipe Ingredients
+- Print/Email the Nutritional Facts
+- Print/Email the Grocery List
