@@ -38,7 +38,7 @@ An asynchronous web app that allows a user to browse through recipes using the E
 
 
 
-#### Landing Page with avialable filters
+#### Landing Page with available filters
 
 ![landing page](https://github.com/romiaujla/xplore-recipe-app/blob/master/img/screen%202.png)
 
