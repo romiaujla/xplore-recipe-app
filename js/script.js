@@ -1,21 +1,3 @@
-function handleStylingCheckBoxes(){
-    $('.checkbox input').on('click',function(e){
-        if($(this).prop('checked') === true){
-            $(this).parent('.checkbox').addClass('checked');
-        }else{
-            $(this).parent('.checkbox').removeClass('checked');
-        }
-    })
-    $('.checkbox input').on('focus',function(e){
-        $(this).parent('.checkbox').addClass('checked');
-    })
-    $('.checkbox input').on('blur',function(e){
-        if($(this).prop('checked') === false){
-            $(this).parent('.checkbox').removeClass('checked');
-        }
-    })
-}
-
 function getItemHTML(){
     // return the list item HTML for all items in the grocerylist
     let items = STORE.groceryList.map(item =>{
@@ -91,26 +73,6 @@ function displayGroceryListPage(){
         styleForOtherPages();
     }   
     renderGroceryList();
-}
-
-function handleAddingUserInputGroceryItem(){
-    // handles adding the item to the grocery list when the user enters their own item in the input box
-    $('.search-result-wrapper').on('submit', '.add-item-form', function(e){
-        e.preventDefault();
-        const item = $('.search-result-wrapper').find('.add-item-textbox').val();
-        addItemToGroceryList({id: cuid(),name: item});
-        displayGroceryListPage();
-        $('.search-result-wrapper').find('.add-item-textbox').focus()
-    });
-}
-
-function handleGroceryListButtonClick(){
-    // handles the button click for the grocery list and renders it to the browser
-    $('.grocery-list-button').on('click', function(e){
-        $('.search-result-wrapper').attr('data-page', 'grocery');
-        $('.search-result-section').attr('role', 'grocery list section');
-        displayGroceryListPage();
-    })
 }
 
 // Returns the property values of the api
@@ -476,42 +438,6 @@ function addItemToGroceryList(item){
     }
 }
 
-function handleRemoveOnMinuButtonClick(){
-    $('.search-result-wrapper').on('click', '.remove-button', function(e){
-        const itemName = $(this).parent('li').find('div').html();
-        removeItemFromGroceryList(itemName);
-        $(this).html('+');
-        $(this).attr('class', 'add-ing-button');
-        
-        // if the page open is grocery page then just reload the page
-        if($('.search-result-wrapper').attr('data-page') === 'grocery')
-        {
-            displayGroceryListPage();
-        }
-    })
-}
-
-function handleAddAllIngredientsbutton(){
-    // adds all ingredients to the grocery list
-    $('.search-result-wrapper').on('click','.add-all-button',function(e){
-        $('.search-result-wrapper').find('.ing-name').each(function(index){
-            addItemToGroceryList({id: $(this).attr("data-id"), name: $(this).html()});
-        });
-        $('.search-result-wrapper .add-ing-button').html('-');
-        $('.search-result-wrapper .add-ing-button').attr('class', 'remove-button');
-    });
-}
-
-function handleAddOnPlusButton(){
-    // adds only selected ingredient to the grocery list
-    $('.search-result-wrapper').on('click', '.add-ing-button', function(e){
-        const itemElement = $(this).parent('li').find('div');
-        addItemToGroceryList({id: itemElement.attr("data-id"), name: itemElement.html()});
-        $(this).html("-");
-        $(this).attr('class','remove-button');
-    });
-}
-
 function renderRecipePage(recipe){
     // renders the recipe page to the browser
     $('.search-result-wrapper').html("");
@@ -556,20 +482,6 @@ function renderRecipePage(recipe){
         </div>
     `);
 }
-
-
-function handleViewRecipeButtonClick(){
-
-    // handles the button click on the receipe thumbnails to take user the detailed info about the recipe
-    $('.search-result-wrapper').on('click', '.recipe-button', function(e){
-
-        let recipeIndex = $(this).val();
-        let recipe = STORE.responseJson.hits[recipeIndex].recipe;
-        renderRecipePage(recipe);
-
-    });
-}
-
 
 function renderSearchResult(recipe, i){
     // renders the search result to the browser
@@ -764,6 +676,44 @@ function hideFilterMenu(){
     }
 }
 
+function checkMinMaxCal(){
+    // checked for the min and max calorie error, will show an error if min is greater than max cal
+    let minCal = $('.min-calorie-textbox').val();
+    let maxCal = $('.max-calorie-textbox').val();
+    if(maxCal > 0){
+        if(parseInt(minCal,10) > parseInt(maxCal,10)){
+            $('.cal-error').slideDown(100);
+            $('body').find('button').each(function(index){
+                if($(this).attr('type') !== 'reset'){
+                    $(this).attr('disabled','true');
+                }                
+            });
+        }else{
+            $('.cal-error').slideUp(100);
+            $('body').find('button').each(function(index){
+                $(this).removeAttr('disabled');
+            });
+        }
+    }
+    if(maxCal === "" || minCal === ""){
+        $('.cal-error').slideUp(100);
+        $('body').find('button').each(function(index){
+            $(this).removeAttr('disabled');
+        });
+    }
+}
+
+function filterMenuShowToggle(){
+    // this function checks if filtermenu is visible then hides it
+    // else otherwise displays it
+    $('.filter-button').toggleClass('clicked');
+    if($('.filter-drop-down-menu').css('display') === 'none'){
+        $('.filter-drop-down-menu').slideDown(150);
+    }else{
+        $('.filter-drop-down-menu').slideUp(150);
+    }
+}
+
 function watchForm(){
 
     // Handles the search query submission by the user (Find Button Click)
@@ -800,33 +750,6 @@ function watchForm(){
     });
 }
 
-function checkMinMaxCal(){
-    // checked for the min and max calorie error, will show an error if min is greater than max cal
-    let minCal = $('.min-calorie-textbox').val();
-    let maxCal = $('.max-calorie-textbox').val();
-    if(maxCal > 0){
-        if(parseInt(minCal,10) > parseInt(maxCal,10)){
-            $('.cal-error').slideDown(100);
-            $('body').find('button').each(function(index){
-                if($(this).attr('type') !== 'reset'){
-                    $(this).attr('disabled','true');
-                }                
-            });
-        }else{
-            $('.cal-error').slideUp(100);
-            $('body').find('button').each(function(index){
-                $(this).removeAttr('disabled');
-            });
-        }
-    }
-    if(maxCal === "" || minCal === ""){
-        $('.cal-error').slideUp(100);
-        $('body').find('button').each(function(index){
-            $(this).removeAttr('disabled');
-        });
-    }
-}
-
 function handleCalorieError(){
     // checks for error when max and min cal box leave focus
     $('.max-calorie-textbox').on('focusout', function(e){
@@ -838,16 +761,90 @@ function handleCalorieError(){
 
 }
 
-function filterMenuShowToggle(){
-    // this function checks if filtermenu is visible then hides it
-    // else otherwise displays it
-    $('.filter-button').toggleClass('clicked');
-    if($('.filter-drop-down-menu').css('display') === 'none'){
-        $('.filter-drop-down-menu').slideDown(150);
-        handleCalorieError();
-    }else{
-        $('.filter-drop-down-menu').slideUp(150);
-    }
+function handleStylingCheckBoxes(){
+    $('.checkbox input').on('click',function(e){
+        if($(this).prop('checked') === true){
+            $(this).parent('.checkbox').addClass('checked');
+        }else{
+            $(this).parent('.checkbox').removeClass('checked');
+        }
+    })
+    $('.checkbox input').on('focus',function(e){
+        $(this).parent('.checkbox').addClass('checked');
+    })
+    $('.checkbox input').on('blur',function(e){
+        if($(this).prop('checked') === false){
+            $(this).parent('.checkbox').removeClass('checked');
+        }
+    })
+}
+
+function handleAddingUserInputGroceryItem(){
+    // handles adding the item to the grocery list when the user enters their own item in the input box
+    $('.search-result-wrapper').on('submit', '.add-item-form', function(e){
+        e.preventDefault();
+        const item = $('.search-result-wrapper').find('.add-item-textbox').val();
+        addItemToGroceryList({id: cuid(),name: item});
+        displayGroceryListPage();
+        $('.search-result-wrapper').find('.add-item-textbox').focus()
+    });
+}
+
+function handleRemoveOnMinuButtonClick(){
+    $('.search-result-wrapper').on('click', '.remove-button', function(e){
+        const itemName = $(this).parent('li').find('div').html();
+        removeItemFromGroceryList(itemName);
+        $(this).html('+');
+        $(this).attr('class', 'add-ing-button');
+        
+        // if the page open is grocery page then just reload the page
+        if($('.search-result-wrapper').attr('data-page') === 'grocery')
+        {
+            displayGroceryListPage();
+        }
+    })
+}
+
+function handleAddOnPlusButton(){
+    // adds only selected ingredient to the grocery list
+    $('.search-result-wrapper').on('click', '.add-ing-button', function(e){
+        const itemElement = $(this).parent('li').find('div');
+        addItemToGroceryList({id: itemElement.attr("data-id"), name: itemElement.html()});
+        $(this).html("-");
+        $(this).attr('class','remove-button');
+    });
+}
+
+function handleAddAllIngredientsbutton(){
+    // adds all ingredients to the grocery list
+    $('.search-result-wrapper').on('click','.add-all-button',function(e){
+        $('.search-result-wrapper').find('.ing-name').each(function(index){
+            addItemToGroceryList({id: $(this).attr("data-id"), name: $(this).html()});
+        });
+        $('.search-result-wrapper .add-ing-button').html('-');
+        $('.search-result-wrapper .add-ing-button').attr('class', 'remove-button');
+    });
+}
+
+function handleViewRecipeButtonClick(){
+
+    // handles the button click on the receipe thumbnails to take user the detailed info about the recipe
+    $('.search-result-wrapper').on('click', '.recipe-button', function(e){
+
+        let recipeIndex = $(this).val();
+        let recipe = STORE.responseJson.hits[recipeIndex].recipe;
+        renderRecipePage(recipe);
+
+    });
+}
+
+function handleGroceryListButtonClick(){
+    // handles the button click for the grocery list and renders it to the browser
+    $('.grocery-list-button').on('click', function(e){
+        $('.search-result-wrapper').attr('data-page', 'grocery');
+        $('.search-result-section').attr('role', 'grocery list section');
+        displayGroceryListPage();
+    })
 }
 
 function handleFilterMenuClicks(){
@@ -880,7 +877,6 @@ function handleFilterButtonClick(){
 
 // main function that calls back all the functions required to work when the DOM is ready.
 function main(){
-
     handleFilterButtonClick();
     handleFilterMenuClicks();
     handleGroceryListButtonClick();
@@ -890,6 +886,7 @@ function main(){
     handleRemoveOnMinuButtonClick();
     handleAddingUserInputGroceryItem();
     handleStylingCheckBoxes();
+    handleCalorieError();
     watchForm();
 }
 
