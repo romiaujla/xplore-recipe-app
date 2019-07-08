@@ -21,7 +21,7 @@ An asynchronous web app that allows a user to browse through recipes using the E
 	- Filter by selecting allergens
         - Peanuts free 
         - Tree-nuts free
-- Once the recipe is searched, the user can then add ingredients to their own grocery list
+- Once the recipe is searched, the user can then add ingredients to their grocery list
 - User can remove items from the grocery list
 - User can view detailed nutritional information about the recipe
 - Users can go the source of the recipe to look up for instructions on how to cook the dish.
