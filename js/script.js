@@ -59,8 +59,7 @@ function groceryListItemHTML(){
 }
 
 function renderGroceryList(){
-    // this function displays the grocery list page.
-    // console.log(STORE.previousPageState);
+    // this function displays the grocery list page.    
     $('.search-result-wrapper').html(`
         
         <div class="grocery-list-page">
@@ -109,6 +108,7 @@ function handleGroceryListButtonClick(){
     // handles the button click for the grocery list and renders it to the browser
     $('.grocery-list-button').on('click', function(e){
         $('.search-result-wrapper').attr('data-page', 'grocery');
+        $('.search-result-section').attr('role', 'grocery list section');
         displayGroceryListPage();
     })
 }
@@ -480,7 +480,6 @@ function handleRemoveOnMinuButtonClick(){
     $('.search-result-wrapper').on('click', '.remove-button', function(e){
         const itemName = $(this).parent('li').find('div').html();
         removeItemFromGroceryList(itemName);
-        console.log(STORE.groceryList);
         $(this).html('+');
         $(this).attr('class', 'add-ing-button');
         
@@ -517,6 +516,7 @@ function renderRecipePage(recipe){
     // renders the recipe page to the browser
     $('.search-result-wrapper').html("");
     $('.search-result-wrapper').attr('data-page','recipe-page');
+    $('.search-result-section').attr('role', 'recipe information section');
     $('.search-result-wrapper').append(`
         <h2 class="recipe-page-name">
             ${recipe.label}
@@ -606,7 +606,8 @@ function displayResults(responseJson){
     
     // this function handles the functionality for displaying the search result to the user
     $('.search-result-wrapper').html("");
-    $('.search-result-wrapper').attr('data-page', 'search-result')
+    $('.search-result-wrapper').attr('data-page', 'search-result');
+    $('.search-result-section').attr('role', 'search result section');
     let recipesFound = responseJson.hits.length;
 
     // if no recipes aer found display no result page
